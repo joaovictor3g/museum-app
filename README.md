@@ -2,6 +2,12 @@
 
 Esta aplicação é a realização do desafio proposto para a vaga de Desenvolvedor Frontend Pleno na Insight Data Science Lab.
 
+### Tecnologias
+
+- [React](https://react.dev/)
+- [Next](https://nextjs.org)
+- [Stitches](https://stitches.dev/)
+
 ### Como rodar
 
 ```bash
