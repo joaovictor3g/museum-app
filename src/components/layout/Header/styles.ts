@@ -1,9 +1,17 @@
 import { styled } from "@/styles";
 
 export const HeaderContainer = styled("header", {
-  background: "rgba(255, 255, 255, 0.005)",
-  borderBottom: "1px solid $gray90",
-  backdropFilter: "blur(24px)",
+  height: "80px",
+
+  ".fixed": {
+    background: "rgba(255, 255, 255, 0.005)",
+    borderBottom: "1px solid $gray90",
+    backdropFilter: "blur(24px)",
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+  },
 
   ".header-wrapper": {
     padding: "1.5rem 0.5rem",
@@ -11,13 +19,6 @@ export const HeaderContainer = styled("header", {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-
-    ".fixed": {
-      position: "fixed",
-      top: 0,
-      left: 0,
-      width: "100%",
-    },
   },
 
   "@md": {
@@ -40,6 +41,7 @@ export const Nav = styled("nav", {
       color: "$gray30",
       fontWeight: 500,
       fontSize: "$md",
+      fontFamily: "var(--inter)",
 
       "&.active": {
         color: "$primaryMain",

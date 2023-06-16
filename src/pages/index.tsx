@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { Wrapper } from "@/components/styled";
+import { HeroSection } from "@/components/pages/Home";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <HeroSection />
         <Wrapper></Wrapper>
       </main>
     </>

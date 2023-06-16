@@ -9,6 +9,6 @@ export const globalStyles = globalCss({
 
   body: {
     backgroundColor: "$grayMain",
-    fontFamily: "Inter",
+    color: "$gray30",
   },
 });
