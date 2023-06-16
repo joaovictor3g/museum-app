@@ -5,7 +5,7 @@ Esta aplicação é a realização do desafio proposto para a vaga de Desenvolve
 ### Tecnologias
 
 - [React](https://react.dev/)
-- [Next](https://nextjs.org)
+- [Next.js](https://nextjs.org)
 - [Stitches](https://stitches.dev/)
 
 ### Como rodar
@@ -25,4 +25,4 @@ npm i
 npm run dev
 ```
 
-Com isso tudo feito, a aplicação deve estar disponível na url local: `http://localhost:3000`
+Com isso tudo feito, a aplicação deve estar disponível na url local: `http://localhost:3000`.
