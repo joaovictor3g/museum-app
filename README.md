@@ -13,9 +13,10 @@ Esta aplicação é a realização do desafio proposto para a vaga de Desenvolve
 ```bash
 # Requisitos
   - Node instalado
+  - Git instalado
 
 # clone este repositório
-// TODO
+git clone git@github.com:joaovictor3g/museum-app.git
 
 # Na pasta do projeto, rode para instalação das dependềncias:
 npm i
