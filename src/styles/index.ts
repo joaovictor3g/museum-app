@@ -34,5 +34,3 @@ export const {
     lg: "(max-width: 1000px)",
   },
 });
-
-export { globalStyles } from "./global";
