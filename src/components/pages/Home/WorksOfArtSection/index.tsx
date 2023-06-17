@@ -20,6 +20,10 @@ export function WorksOfArtSection() {
       image: data.primaryImageSmall,
       name: data.title,
       author: data.artistDisplayName,
+      additionalImages: data.additionalImages,
+      constituents: data.constituents,
+      imageSmall: data.primaryImageSmall,
+      isPublicDomain: data.isPublicDomain,
     }));
 
     setWorks(works);

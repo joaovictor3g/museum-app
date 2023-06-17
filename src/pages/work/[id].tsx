@@ -4,6 +4,7 @@ import {
   Box,
   SectionInfos,
 } from "@/components/pages/WorkDetail";
+import { SectionOtherWorks } from "@/components/pages/WorkDetail/SectionOtherWorks";
 import { Wrapper } from "@/components/styled";
 import { api } from "@/services/api";
 import { ArrowLeft } from "lucide-react";
@@ -32,6 +33,7 @@ export default function WorkDetail({ work }: WorkDetailProps) {
         </BackContainer>
         <Box>
           <SectionInfos work={work} />
+          <SectionOtherWorks author={work.author} />
         </Box>
       </main>
     </>

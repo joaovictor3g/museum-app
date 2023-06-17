@@ -15,7 +15,7 @@ export function CollaboratorsSlider({ slides }: CollaboratorsSliderProps) {
   const [sliderRef, instanceRef] = useKeenSlider({
     slides: {
       spacing: 8,
-      perView: () => (slides && slides.length > 2 ? 2.1 : "auto"),
+      perView: 2.1,
     },
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel);
