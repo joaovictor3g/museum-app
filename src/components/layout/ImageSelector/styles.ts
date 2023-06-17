@@ -8,15 +8,21 @@ export const ImageSelectorContainer = styled("div", {
   img: {
     width: "100%",
     borderRadius: 8,
+    height: "100%",
   },
 
   ".images-to-select": {
     display: "flex",
     flexDirection: "column",
     gap: "1rem",
+
+    img: {
+      width: 235,
+      height: 131,
+    },
   },
 
   ".main-image": {
-    objectFit: "contain",
+    objectFit: "cover",
   },
 });

@@ -5,4 +5,5 @@ export interface Work {
   image: string;
   imageSmall: string;
   additionalImages: string[];
+  isPublicDomain: boolean;
 }

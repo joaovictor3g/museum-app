@@ -1,10 +1,27 @@
 import { styled } from "@/styles";
 
 export const Box = styled("section", {
-  display: "flex",
+  display: "grid",
+  gridTemplateColumns: "1fr 390px",
   gap: "1rem",
 
   fontFamily: "var(--inter)",
+
+  header: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+
+    ".favorite": {
+      border: "none",
+      backgroundColor: "transparent",
+      color: "$gray40",
+
+      "&.favorited": {
+        color: "$primaryMain",
+      },
+    },
+  },
 
   ".work-infos": {
     display: "flex",
