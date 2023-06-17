@@ -1,7 +1,6 @@
 import { styled } from "@/styles";
 
 export const HeaderContainer = styled("header", {
-  // height: "80px",
   background: "rgba(255, 255, 255, 0.005)",
 
   ".fixed": {
@@ -11,6 +10,7 @@ export const HeaderContainer = styled("header", {
     top: 0,
     left: 0,
     width: "100%",
+    zIndex: 10,
   },
 
   ".header-wrapper": {

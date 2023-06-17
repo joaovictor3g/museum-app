@@ -12,6 +12,7 @@ export const MansoryContainer = styled("div", {
 
     img: {
       width: "100%",
+      opacity: 0.8,
       borderRadius: 4,
     },
   },

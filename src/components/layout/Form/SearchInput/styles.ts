@@ -21,6 +21,11 @@ export const Box = styled("div", {
     backgroundColor: "$gray100",
     borderTop: "inherit",
   },
+
+  "&:hover": {
+    border: "1px solid $gray70",
+    color: "$gray30",
+  },
 });
 
 export const SearchInputContainer = styled("div", {
