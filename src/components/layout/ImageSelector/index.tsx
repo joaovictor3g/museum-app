@@ -1,7 +1,6 @@
+import { useState } from "react";
 import { ImageSelectorContainer } from "./styles";
 
-import img1 from "@/assets/mocks2/1.png";
-import img2 from "@/assets/mocks2/2.png";
 import Image from "next/image";
 
 interface ImageSelectorProps {
@@ -10,14 +9,40 @@ interface ImageSelectorProps {
 }
 
 export function ImageSelector({ images, mainImage }: ImageSelectorProps) {
+  const [sideImages, setSideImages] = useState(images);
+  const [mainImageView, setMainImageView] = useState(mainImage);
+
+  function handleImageClick(image: string) {
+    setSideImages((oldImages) => {
+      const images = oldImages.filter((_image) => _image !== image);
+      return [mainImageView, ...images];
+    });
+
+    setMainImageView(sideImages.find((_image) => _image === image) ?? "");
+  }
+
   return (
     <ImageSelectorContainer>
       <div className="images-to-select">
-        {images.map((image, i) => (
-          <Image key={i} src={image} alt="" width={200} height={150} />
+        {sideImages.map((image, i) => (
+          <button
+            key={i}
+            onClick={() => handleImageClick(image)}
+            data-active={image === mainImageView}
+          >
+            <Image src={image} alt="" width={200} height={150} />
+          </button>
         ))}
       </div>
-      <img src={mainImage} alt="" className="main-image" />
+      <div className="main-image">
+        <Image
+          src={mainImageView}
+          loading="lazy"
+          alt=""
+          width={400}
+          height={200}
+        />
+      </div>
     </ImageSelectorContainer>
   );
 }

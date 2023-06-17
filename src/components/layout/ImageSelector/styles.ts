@@ -7,8 +7,8 @@ export const ImageSelectorContainer = styled("div", {
 
   img: {
     width: "100%",
-    borderRadius: 8,
     height: "100%",
+    borderRadius: "$md",
   },
 
   ".images-to-select": {
@@ -16,13 +16,29 @@ export const ImageSelectorContainer = styled("div", {
     flexDirection: "column",
     gap: "1rem",
 
-    img: {
+    button: {
+      border: "1px solid $gray90",
+      borderRadius: "$md",
+
+      backgroundColor: "transparent",
       width: 235,
-      height: 131,
+      height: "max-content",
+      maxHeight: 132,
+    },
+
+    img: {
+      objectFit: "cover",
     },
   },
 
   ".main-image": {
-    objectFit: "cover",
+    position: "relative",
+    border: "1px solid $gray90",
+    overflow: "hidden",
+    borderRadius: "$md",
+
+    img: {
+      objectFit: "fill",
+    },
   },
 });

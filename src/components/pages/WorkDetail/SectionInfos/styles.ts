@@ -29,7 +29,6 @@ export const Box = styled("section", {
     gap: "1rem",
     paddingBottom: "2rem",
 
-    borderBottom: "1px solid $gray90",
     height: "max-content",
 
     ".category": {
@@ -70,6 +69,13 @@ export const Box = styled("section", {
       width: "max-content",
       padding: "0.5rem 1rem",
       color: "$gray90",
+    },
+
+    ".separator": {
+      margin: "38px 0",
+      width: "100%",
+      height: 1,
+      backgroundColor: "$gray90",
     },
   },
 });

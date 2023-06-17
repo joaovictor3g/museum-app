@@ -2,7 +2,7 @@ import { ImageSelector } from "@/components/layout/ImageSelector";
 import { Box } from "./styles";
 import { Work } from "@/@types/work";
 import { Heart } from "lucide-react";
-import { Tooltip } from "@/components/layout";
+import { CollaboratorsSlider, Tooltip } from "@/components/layout";
 
 interface SectionInfosProps {
   work: Work;
@@ -42,6 +42,12 @@ export function SectionInfos({ work }: SectionInfosProps) {
             <span className="private">Domínio privado</span>
           )}
         </div>
+
+        <div className="separator" />
+
+        <CollaboratorsSlider
+          slides={work.constituents?.map((constituent) => constituent.name)}
+        />
       </div>
     </Box>
   );

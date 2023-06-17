@@ -59,6 +59,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         id: work.objectID,
         image: work.primaryImage,
         author: work.artistDisplayName,
+        constituents: work.constituents,
       },
     },
   };
