@@ -7,8 +7,8 @@ export const HeroSectionContainer = styled("section", {
   backgroundSize: "auto",
   backgroundRepeat: "no-repeat",
   width: "100%",
-  height: "calc(100vh)",
-  backgroundColor: "$grayMain",
+  height: "100vh",
+  backgroundColor: "$gray100",
 
   "@md": {
     marginTop: 68,
@@ -21,11 +21,11 @@ export const Box = styled(Wrapper, {
   flexDirection: "column",
   textAlign: "center",
   justifyContent: "end",
-  paddingBottom: "2rem",
   alignItems: "center",
   gap: "1.5rem",
   maxWidth: 1000,
   width: "100%",
+  paddingBottom: "3rem",
 
   p: {
     fontSize: "$4xl",

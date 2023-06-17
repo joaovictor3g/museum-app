@@ -8,7 +8,7 @@ export const globalStyles = globalCss({
   },
 
   body: {
-    backgroundColor: "$gray100",
+    backgroundColor: "$grayMain",
     color: "$gray30",
   },
 });
