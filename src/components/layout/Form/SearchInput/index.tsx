@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RadioGroup } from "../RadioGroup";
 import { Box, SearchInputContainer } from "./styles";
 import { Search, ChevronDown } from "lucide-react";
@@ -6,12 +6,14 @@ import { useSearch } from "@/hooks/useSearch";
 
 export function SearchInput() {
   const [expandRadio, setExpandRadio] = useState(false);
-  const { handleSearch } = useSearch();
+  const { handleSearch, page } = useSearch();
 
   const [q, setQ] = useState("");
   const [searchBy, setSearchBy] = useState("");
 
-  console.log({ searchBy });
+  useEffect(() => {
+    handleSearch(q, searchBy);
+  }, [searchBy, page]); // eslint-disable-line
 
   return (
     <Box

@@ -6,7 +6,7 @@ import { api } from "@/services/api";
 import { Work } from "@/@types/work";
 import Link from "next/link";
 import { useSearch } from "@/hooks/useSearch";
-import { WorkBox } from "@/components/layout";
+import { Pagination, WorkBox } from "@/components/layout";
 
 const requests = [
   231980, 470311, 208898, 469857, 207665, 189425, 472353, 471179, 205431,
@@ -15,7 +15,12 @@ const requests = [
 export function WorksOfArtSection() {
   const [works, setWorks] = useState<Work[]>([]);
 
-  const { works: searchedWorks } = useSearch();
+  const {
+    works: searchedWorks,
+    total: totalSearchedWorks,
+    handleChangePage,
+    page,
+  } = useSearch();
 
   async function getImageWorks() {
     const responseObjects = await Promise.all(requests);
@@ -43,7 +48,14 @@ export function WorksOfArtSection() {
       <Box>
         {!!searchedWorks ? (
           <div className="searched-works">
-            <strong>Resultados ({searchedWorks.length})</strong>
+            <div className="results-pagination">
+              <strong>Resultados ({totalSearchedWorks})</strong>
+              <Pagination
+                onChange={handleChangePage}
+                page={page}
+                totalPages={Math.floor(totalSearchedWorks / 9)}
+              />
+            </div>
             <div className="grid">
               {searchedWorks.map((work) => (
                 <WorkBox key={work.id} work={work} />

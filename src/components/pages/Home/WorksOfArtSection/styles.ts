@@ -18,6 +18,12 @@ export const Box = styled(Wrapper, {
     flexDirection: "column",
     gap: "1.5rem",
 
+    ".results-pagination": {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+    },
+
     strong: {
       color: "$gray30",
       fontWeight: 500,
