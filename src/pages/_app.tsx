@@ -5,6 +5,8 @@ import localFont from "next/font/local";
 import { globalStyles } from "@/styles/global";
 import { Header } from "@/components/layout";
 
+import "@/styles/global.css";
+
 globalStyles();
 
 const inter = Inter({
