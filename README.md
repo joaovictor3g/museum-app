@@ -7,6 +7,8 @@ Esta aplicação é a realização do desafio proposto para a vaga de Desenvolve
 - [React](https://react.dev/)
 - [Next.js](https://nextjs.org)
 - [Stitches](https://stitches.dev/)
+- [Lucide]
+- [Radix]
 
 ### Como rodar
 

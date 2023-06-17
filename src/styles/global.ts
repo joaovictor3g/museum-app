@@ -7,8 +7,16 @@ export const globalStyles = globalCss({
     boxSizing: "border-box",
   },
 
+  html: {
+    scrollBehavior: "smooth",
+  },
+
   body: {
     backgroundColor: "$grayMain",
     color: "$gray30",
+  },
+
+  button: {
+    cursor: "pointer",
   },
 });

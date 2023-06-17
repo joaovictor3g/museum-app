@@ -1,16 +1,34 @@
 import { styled } from "@/styles";
 
+export const Box = styled("div", {
+  maxWidth: 700,
+  width: "100%",
+  margin: "0 auto",
+  border: "1px solid $gray90",
+  borderRadius: "$lg",
+  overflow: "hidden",
+
+  "&.expanded": {
+    ".icon": {
+      transform: "rotate(180deg)",
+      transition: "transform 0.5s",
+    },
+  },
+
+  ".options": {
+    height: 64,
+    width: "100%",
+    backgroundColor: "$gray100",
+    borderTop: "inherit",
+  },
+});
+
 export const SearchInputContainer = styled("div", {
   display: "flex",
   alignItems: "center",
   backgroundColor: "$gray100",
-  border: "1px solid $gray90",
-  borderRadius: "$lg",
 
-  maxWidth: 700,
-  width: "100%",
   height: 64,
-  margin: "0 auto",
   overflow: "hidden",
   paddingInlineStart: "1rem",
   color: "$gray40",

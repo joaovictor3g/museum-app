@@ -14,9 +14,9 @@ export function HeroSection() {
           renomado Museu Metropolitano de Arte.
         </span>
 
-        <button className="scrolldown">
+        <a href="#search" className="scrolldown">
           <ArrowDown />
-        </button>
+        </a>
       </Box>
     </HeroSectionContainer>
   );
