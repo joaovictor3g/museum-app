@@ -7,7 +7,12 @@ export function SearchInput() {
   const [expandRadio, setExpandRadio] = useState(false);
 
   return (
-    <Box className={expandRadio ? "expanded" : ""}>
+    <Box
+      className={expandRadio ? "expanded" : ""}
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+    >
       <SearchInputContainer>
         <Search />
         <input type="text" placeholder="Busque por obras, artistas ou locais" />

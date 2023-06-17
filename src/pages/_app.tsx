@@ -38,7 +38,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <div className={`${inter.variable} ${ppHatton.variable}`}>
       <Header />
-      <Component {...pageProps} />
+      <main>
+        <Component {...pageProps} />
+      </main>
     </div>
   );
 }

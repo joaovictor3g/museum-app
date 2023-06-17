@@ -1,11 +1,7 @@
 import { Work } from "@/@types/work";
-import {
-  BackContainer,
-  Box,
-  SectionInfos,
-} from "@/components/pages/WorkDetail";
+import { Box, SectionInfos } from "@/components/pages/WorkDetail";
 import { SectionOtherWorks } from "@/components/pages/WorkDetail/SectionOtherWorks";
-import { Wrapper } from "@/components/styled";
+import { MainInfoContainer, Wrapper } from "@/components/styled";
 import { api } from "@/services/api";
 import { ArrowLeft } from "lucide-react";
 import { GetStaticProps, GetStaticPaths } from "next";
@@ -22,20 +18,20 @@ export default function WorkDetail({ work }: WorkDetailProps) {
       <Head>
         <title>Work</title>
       </Head>
-      <main>
-        <BackContainer>
+      <div>
+        <MainInfoContainer>
           <Wrapper>
             <Link href="/">
               <ArrowLeft size={18} />
               Voltar
             </Link>
           </Wrapper>
-        </BackContainer>
+        </MainInfoContainer>
         <Box>
           <SectionInfos work={work} />
           <SectionOtherWorks author={work.author} />
         </Box>
-      </main>
+      </div>
     </>
   );
 }

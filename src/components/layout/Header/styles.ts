@@ -47,6 +47,10 @@ export const Nav = styled("nav", {
       "&.active": {
         color: "$primaryMain",
       },
+
+      "&:hover:not(.active)": {
+        color: "$gray10",
+      },
     },
   },
 
