@@ -53,7 +53,7 @@ export function WorksOfArtSection() {
               <Pagination
                 onChange={handleChangePage}
                 page={page}
-                totalPages={Math.floor(totalSearchedWorks / 9)}
+                totalPages={Math.ceil(totalSearchedWorks / 9)}
               />
             </div>
             <div className="grid">

@@ -9,12 +9,12 @@ interface WorkBoxProps {
 
 export function WorkBox({ work }: WorkBoxProps) {
   return (
-    <Box>
+    <Box href={`/work/${work.id}`}>
       <Image src={work.imageSmall} alt="" width={300} height={300} />
-      <Link href={`/work/${work.id}`} className="infos">
+      <div className="infos">
         <strong className="title">{work.name}</strong>
         <span className="author">{work.author}</span>
-      </Link>
+      </div>
     </Box>
   );
 }

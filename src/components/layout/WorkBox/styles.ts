@@ -1,9 +1,12 @@
 import { styled } from "@/styles";
+import Link from "next/link";
 
-export const Box = styled("div", {
+export const Box = styled(Link, {
   backgroundColor: "$gray100",
   border: "1px solid $gray90",
   width: "100%",
+  textDecoration: "none",
+  color: "$gray10",
 
   display: "flex",
   flexDirection: "column",
@@ -38,9 +41,11 @@ export const Box = styled("div", {
       fontSize: "$md",
       color: "$gray30",
     },
+  },
 
-    "&:hover": {
-      textDecoration: "underline",
-    },
+  "&:hover": {
+    borderColor: "$gray70",
+    cursor: "pointer",
+    textDecoration: "underline",
   },
 });
