@@ -14,6 +14,7 @@ export const globalStyles = globalCss({
   body: {
     backgroundColor: "$grayMain",
     color: "$gray30",
+    minHeight: "100vh",
   },
 
   button: {

@@ -3,4 +3,6 @@ export interface Work {
   name: string;
   author: string;
   image: string;
+  imageSmall: string;
+  additionalImages: string[];
 }

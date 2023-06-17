@@ -3,11 +3,11 @@ import { styled } from "@/styles";
 
 export const HeroSectionContainer = styled("section", {
   backgroundImage: `url(/hero-background.png)`,
-  backgroundPosition: "center",
+  backgroundPosition: "center 136px",
   backgroundSize: "auto",
   backgroundRepeat: "no-repeat",
   width: "100%",
-  height: "100vh",
+  height: "calc(100vh - 80px)",
   backgroundColor: "$gray100",
 
   "@md": {
@@ -16,11 +16,12 @@ export const HeroSectionContainer = styled("section", {
 });
 
 export const Box = styled(Wrapper, {
+  paddingTop: 347,
   height: "inherit",
   display: "flex",
   flexDirection: "column",
   textAlign: "center",
-  justifyContent: "end",
+
   alignItems: "center",
   gap: "1.5rem",
   maxWidth: 1000,
@@ -39,6 +40,9 @@ export const Box = styled(Wrapper, {
   },
 
   ".discover": {
+    maxWidth: 900,
+    width: "100%",
+    margin: "0 auto",
     color: "$gray20",
     fontFamily: "var(--inter)",
     fontSize: "$xl",
@@ -48,7 +52,7 @@ export const Box = styled(Wrapper, {
     marginTop: "2rem",
     backgroundColor: "transparent",
     color: "$primaryMain",
-    border: "1px solid currentColor",
+    border: "1px solid $primaryMain",
     borderRadius: "$full",
 
     width: 64,
@@ -57,10 +61,11 @@ export const Box = styled(Wrapper, {
     alignItems: "center",
     justifyContent: "center",
     cursor: "pointer",
+    transition: "transform 300ms",
 
     "&:hover": {
-      backgroundColor: "$primaryMain",
-      color: "$grayMain",
+      transform: "scale(1.2)",
+      color: "$primary20",
     },
   },
 

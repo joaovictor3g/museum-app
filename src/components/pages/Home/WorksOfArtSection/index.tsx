@@ -4,6 +4,7 @@ import { Box, WorksOfArtSectionContainer } from "./styles";
 import { useEffect, useState } from "react";
 import { api } from "@/services/api";
 import { Work } from "@/@types/work";
+import Link from "next/link";
 
 const requests = [
   231980, 470311, 208898, 469857, 207665, 189425, 472353, 471179, 205431,
@@ -35,14 +36,16 @@ export function WorksOfArtSection() {
 
         <MansoryContainer className="mansory">
           {works.map((work) => (
-            <figure key={work.id}>
-              <img src={work.image} alt="" />
+            <Link href={`/work/${work.id}`} key={work.id}>
+              <figure>
+                <img src={work.image} alt="" />
 
-              <div className="work-info">
-                <strong className="work-info-name">{work.name}</strong>
-                <span className="work-info-author">{work.author}</span>
-              </div>
-            </figure>
+                <div className="work-info">
+                  <strong className="work-info-name">{work.name}</strong>
+                  <span className="work-info-author">{work.author}</span>
+                </div>
+              </figure>
+            </Link>
           ))}
         </MansoryContainer>
       </Box>

@@ -2,6 +2,7 @@ import { styled } from "@/styles";
 
 export const HeaderContainer = styled("header", {
   background: "rgba(255, 255, 255, 0.005)",
+  height: 80,
 
   ".fixed": {
     borderBottom: "1px solid $gray90",
