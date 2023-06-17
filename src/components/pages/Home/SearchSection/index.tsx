@@ -1,5 +1,5 @@
 import { SearchInput } from "@/components/layout/Form";
-import { SearchSectionContainer } from "./search-section.styles";
+import { SearchSectionContainer } from "./styles";
 import { Wrapper } from "@/components/styled";
 
 export function SearchSection() {

@@ -1,4 +1,4 @@
-import { Box, HeroSectionContainer } from "./hero-section.styles";
+import { Box, HeroSectionContainer } from "./styles";
 import { ArrowDown } from "lucide-react";
 
 export function HeroSection() {

@@ -1,7 +1,7 @@
 import { styled } from "@/styles";
 
 export const MansoryContainer = styled("div", {
-  columnCount: 5,
+  columnCount: 4,
   columnGap: "10px",
 
   figure: {

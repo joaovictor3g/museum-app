@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { Wrapper } from "@/components/styled";
 import { HeroSection, SearchSection } from "@/components/pages/Home";
+import { WorksOfArtSection } from "@/components/pages/Home/WorksOfArtSection";
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
       <main>
         <HeroSection />
         <SearchSection />
-        <Wrapper></Wrapper>
+        <WorksOfArtSection />
       </main>
     </>
   );
