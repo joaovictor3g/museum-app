@@ -69,6 +69,11 @@ export const Box = styled("section", {
       width: "max-content",
       padding: "0.5rem 1rem",
       color: "$gray90",
+
+      "&.private": {
+        backgroundColor: "$primary100",
+        color: "$primary10",
+      },
     },
 
     ".separator": {

@@ -12,7 +12,10 @@ export async function loadWorks(ids: number[]) {
       .map<Work>(({ value }: any) => ({
         id: value.data.objectID,
         image: value.data.primaryImageSmall,
-        name: value.data.title.substring(0, 50).concat("..."),
+        name:
+          value.data.title.length > 50
+            ? value.data.title.substring(0, 50).concat("...")
+            : value.data.title,
         fullName: value.data.title,
         author: value.data.artistDisplayName,
         additionalImages: value.data.additionalImages,

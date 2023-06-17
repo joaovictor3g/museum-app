@@ -37,7 +37,11 @@ export function SectionInfos({ work }: SectionInfosProps) {
           </span>
         </div>
 
-        <div className="badge-domain">
+        <div
+          className={`badge-domain ${
+            work.isPublicDomain ? "public" : "private"
+          }`}
+        >
           {work.isPublicDomain ? (
             <span className="public">Domínio público</span>
           ) : (

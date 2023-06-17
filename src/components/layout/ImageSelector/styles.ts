@@ -24,6 +24,10 @@ export const ImageSelectorContainer = styled("div", {
       width: 235,
       height: "max-content",
       maxHeight: 132,
+
+      "&[data-active=true]": {
+        outline: "2px solid $primary60",
+      },
     },
 
     img: {
