@@ -9,7 +9,7 @@ interface SectionOtherWorksProps {
 export function SectionOtherWorks({ author }: SectionOtherWorksProps) {
   const { works } = useWorks({ params: { artistsOrCulture: true, q: author } });
 
-  if (works.length === 0) return null;
+  if (!works || works.length === 0) return null;
 
   return (
     <SectionOtherWorksContainer>

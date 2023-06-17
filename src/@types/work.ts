@@ -13,4 +13,5 @@ export interface Work {
   additionalImages: string[];
   isPublicDomain: boolean;
   constituents: Constituent[] | null;
+  fullName: string;
 }

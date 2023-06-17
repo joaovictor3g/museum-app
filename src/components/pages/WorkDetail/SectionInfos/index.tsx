@@ -25,7 +25,9 @@ export function SectionInfos({ work }: SectionInfosProps) {
             </button>
           </Tooltip>
         </header>
-        <h1 className="title">{work.name}</h1>
+        <h1 className="title" title={work.fullName}>
+          {work.name}
+        </h1>
         <time className="createdAt">Criada em 12 de junho de 1995</time>
 
         <div className="artist">

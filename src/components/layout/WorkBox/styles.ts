@@ -29,6 +29,9 @@ export const Box = styled("div", {
     ".title": {
       fontSize: "$lg",
       fontWeight: 500,
+      whiteSpace: "nowrap",
+      textOverflow: "ellipsis",
+      overflow: "hidden",
     },
 
     ".author": {

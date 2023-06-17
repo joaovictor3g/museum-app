@@ -53,7 +53,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       work: {
         ...work,
-        name: work.title,
+        name: work.title.substring(0, 50).concat("..."),
+        fullName: work.title,
         id: work.objectID,
         image: work.primaryImage,
         author: work.artistDisplayName,

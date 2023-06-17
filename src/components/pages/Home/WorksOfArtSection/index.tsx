@@ -28,6 +28,7 @@ export function WorksOfArtSection() {
       constituents: data.constituents,
       imageSmall: data.primaryImageSmall,
       isPublicDomain: data.isPublicDomain,
+      fullName: data.title,
     }));
 
     setWorks(works);
@@ -60,7 +61,9 @@ export function WorksOfArtSection() {
                     <img src={work.image} alt="" />
 
                     <div className="work-info">
-                      <strong className="work-info-name">{work.name}</strong>
+                      <strong className="work-info-name" title={work.fullName}>
+                        {work.name}
+                      </strong>
                       <span className="work-info-author">{work.author}</span>
                     </div>
                   </figure>
