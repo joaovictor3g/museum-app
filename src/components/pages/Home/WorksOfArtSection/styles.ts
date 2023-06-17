@@ -13,6 +13,25 @@ export const Box = styled(Wrapper, {
   flexDirection: "column",
   gap: "4rem",
 
+  ".searched-works": {
+    display: "flex",
+    flexDirection: "column",
+    gap: "1.5rem",
+
+    strong: {
+      color: "$gray30",
+      fontWeight: 500,
+      fontSize: "$xl",
+      fontFamily: "var(--inter)",
+    },
+
+    ".grid": {
+      display: "grid",
+      gridTemplateColumns: "repeat(3, 1fr)",
+      gap: "1rem",
+    },
+  },
+
   h1: {
     fontSize: "$lg",
     textTransform: "uppercase",

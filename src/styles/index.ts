@@ -44,9 +44,9 @@ export const {
       md: "0.875rem", // 14px
       normal: "1rem", // 16px
       lg: "1.25rem", // 20px
-      xl: "1.5rem", // 24px,
+      xl: "1.5rem", // 24px
       "2xl": "2rem", // 32px
-      "4xl": "4rem",
+      "4xl": "4rem", // 64px
     },
 
     radii: {

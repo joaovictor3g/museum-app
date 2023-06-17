@@ -2,6 +2,7 @@ import Head from "next/head";
 import { Blur } from "@/components/styled";
 import { HeroSection, SearchSection } from "@/components/pages/Home";
 import { WorksOfArtSection } from "@/components/pages/Home/WorksOfArtSection";
+import { SearchProvider } from "@/contexts/SearchContext";
 
 export default function Home() {
   return (
@@ -14,8 +15,10 @@ export default function Home() {
       </Head>
       <div>
         <HeroSection />
-        <SearchSection />
-        <WorksOfArtSection />
+        <SearchProvider>
+          <SearchSection />
+          <WorksOfArtSection />
+        </SearchProvider>
         <Blur />
       </div>
     </>

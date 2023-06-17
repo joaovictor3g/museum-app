@@ -1,14 +1,10 @@
+import { Params } from "@/@types/params";
 import { Work } from "@/@types/work";
 import { api } from "@/services/api";
 import { useEffect, useState } from "react";
 
 interface UseWorksProps {
-  params: {
-    artistsOrCulture?: boolean;
-    title?: boolean;
-    geoLocation?: boolean;
-    q: string;
-  };
+  params: Params;
 }
 
 export function useWorks({ params }: UseWorksProps) {

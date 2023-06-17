@@ -2,17 +2,25 @@ import { RadioGroupItem, RadioGroupRoot } from "./styles";
 
 import { User, MapPin, Edit } from "lucide-react";
 
-export function RadioGroup() {
+interface RadioGroupProps {
+  onValueChange(value: string): void;
+  value: string;
+}
+
+export function RadioGroup({
+  onValueChange,
+  value = "artistOrCulture",
+}: RadioGroupProps) {
   return (
-    <RadioGroupRoot defaultValue="artistsOrCulture">
-      <RadioGroupItem value="artistsOrCulture">
+    <RadioGroupRoot onValueChange={onValueChange} value={value}>
+      <RadioGroupItem value="artistOrCulture" defaultChecked>
         <User /> Artistas
       </RadioGroupItem>
       <RadioGroupItem value="title">
         <Edit />
         Obras de arte
       </RadioGroupItem>
-      <RadioGroupItem value="location">
+      <RadioGroupItem value="geoLocation">
         <MapPin />
         Locais
       </RadioGroupItem>

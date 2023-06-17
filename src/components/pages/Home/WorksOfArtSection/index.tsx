@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { api } from "@/services/api";
 import { Work } from "@/@types/work";
 import Link from "next/link";
+import { useSearch } from "@/hooks/useSearch";
+import { WorkBox } from "@/components/layout";
 
 const requests = [
   231980, 470311, 208898, 469857, 207665, 189425, 472353, 471179, 205431,
@@ -12,6 +14,8 @@ const requests = [
 
 export function WorksOfArtSection() {
   const [works, setWorks] = useState<Work[]>([]);
+
+  const { works: searchedWorks } = useSearch();
 
   async function getImageWorks() {
     const responseObjects = await Promise.all(requests);
@@ -36,22 +40,35 @@ export function WorksOfArtSection() {
   return (
     <WorksOfArtSectionContainer id="worksOfArt">
       <Box>
-        <h1>Veja algumas obras</h1>
+        {!!searchedWorks ? (
+          <div className="searched-works">
+            <strong>Resultados ({searchedWorks.length})</strong>
+            <div className="grid">
+              {searchedWorks.map((work) => (
+                <WorkBox key={work.id} work={work} />
+              ))}
+            </div>
+          </div>
+        ) : (
+          <>
+            <h1>Veja algumas obras</h1>
 
-        <MansoryContainer className="mansory">
-          {works.map((work) => (
-            <Link href={`/work/${work.id}`} key={work.id}>
-              <figure>
-                <img src={work.image} alt="" />
+            <MansoryContainer className="mansory">
+              {works.map((work) => (
+                <Link href={`/work/${work.id}`} key={work.id}>
+                  <figure>
+                    <img src={work.image} alt="" />
 
-                <div className="work-info">
-                  <strong className="work-info-name">{work.name}</strong>
-                  <span className="work-info-author">{work.author}</span>
-                </div>
-              </figure>
-            </Link>
-          ))}
-        </MansoryContainer>
+                    <div className="work-info">
+                      <strong className="work-info-name">{work.name}</strong>
+                      <span className="work-info-author">{work.author}</span>
+                    </div>
+                  </figure>
+                </Link>
+              ))}
+            </MansoryContainer>
+          </>
+        )}
       </Box>
     </WorksOfArtSectionContainer>
   );
