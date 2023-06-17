@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Wrapper } from "@/components/styled";
+import { Blur } from "@/components/styled";
 import { HeroSection, SearchSection } from "@/components/pages/Home";
 import { WorksOfArtSection } from "@/components/pages/Home/WorksOfArtSection";
 
@@ -16,6 +16,7 @@ export default function Home() {
         <HeroSection />
         <SearchSection />
         <WorksOfArtSection />
+        <Blur />
       </main>
     </>
   );

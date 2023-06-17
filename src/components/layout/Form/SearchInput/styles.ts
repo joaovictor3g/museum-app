@@ -1,6 +1,6 @@
 import { styled } from "@/styles";
 
-export const Box = styled("div", {
+export const Box = styled("form", {
   maxWidth: 700,
   width: "100%",
   margin: "0 auto",

@@ -57,6 +57,11 @@ export const Box = styled(Wrapper, {
     alignItems: "center",
     justifyContent: "center",
     cursor: "pointer",
+
+    "&:hover": {
+      backgroundColor: "$primaryMain",
+      color: "$grayMain",
+    },
   },
 
   "@md": {
