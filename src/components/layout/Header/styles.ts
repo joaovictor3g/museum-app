@@ -1,10 +1,10 @@
 import { styled } from "@/styles";
 
 export const HeaderContainer = styled("header", {
-  height: "80px",
+  // height: "80px",
+  background: "rgba(255, 255, 255, 0.005)",
 
   ".fixed": {
-    background: "rgba(255, 255, 255, 0.005)",
     borderBottom: "1px solid $gray90",
     backdropFilter: "blur(24px)",
     position: "fixed",

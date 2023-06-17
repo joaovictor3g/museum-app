@@ -2,13 +2,13 @@ import { Wrapper } from "@/components/styled";
 import { styled } from "@/styles";
 
 export const HeroSectionContainer = styled("section", {
-  marginTop: 136,
   backgroundImage: `url(/hero-background.png)`,
-  backgroundPosition: "top",
+  backgroundPosition: "center",
   backgroundSize: "auto",
   backgroundRepeat: "no-repeat",
   width: "100%",
-  height: "calc(100vh - 80px - 136px)",
+  height: "calc(100vh)",
+  backgroundColor: "$grayMain",
 
   "@md": {
     marginTop: 68,
@@ -20,7 +20,8 @@ export const Box = styled(Wrapper, {
   display: "flex",
   flexDirection: "column",
   textAlign: "center",
-  justifyContent: "center",
+  justifyContent: "end",
+  paddingBottom: "2rem",
   alignItems: "center",
   gap: "1.5rem",
   maxWidth: 1000,

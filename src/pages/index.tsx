@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { Wrapper } from "@/components/styled";
-import { HeroSection } from "@/components/pages/Home";
+import { HeroSection, SearchSection } from "@/components/pages/Home";
 
 export default function Home() {
   return (
@@ -13,6 +13,7 @@ export default function Home() {
       </Head>
       <main>
         <HeroSection />
+        <SearchSection />
         <Wrapper></Wrapper>
       </main>
     </>

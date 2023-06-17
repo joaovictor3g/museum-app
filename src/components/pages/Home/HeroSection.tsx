@@ -3,7 +3,7 @@ import { ArrowDown } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <HeroSectionContainer>
+    <HeroSectionContainer id="hero">
       <Box>
         <p>
           Explore a arte metropolitana além{" "}
