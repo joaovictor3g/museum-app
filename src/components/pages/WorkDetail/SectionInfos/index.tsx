@@ -16,12 +16,11 @@ export function SectionInfos({ work }: SectionInfosProps) {
   const hasWorkinStorage = storage?.includes(work.id);
 
   function handleFavoriteWork(id: number) {
-    if (storage) {
-      if (hasWorkinStorage) {
-        const removedIds = storage.filter((storageID) => storageID !== id);
-        set(key, removedIds);
-      } else set(key, [...storage, id]);
-    }
+    const inStorageIDs = [...(storage ?? [])];
+    if (hasWorkinStorage) {
+      const removedIds = inStorageIDs.filter((storageID) => storageID !== id);
+      set(key, removedIds);
+    } else set(key, [...inStorageIDs, id]);
   }
 
   return (
