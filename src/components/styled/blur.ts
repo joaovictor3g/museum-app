@@ -13,4 +13,8 @@ export const Blur = styled("div", {
   position: "absolute",
   top: 0,
   left: 0,
+
+  "@md": {
+    zIndex: -1,
+  },
 });

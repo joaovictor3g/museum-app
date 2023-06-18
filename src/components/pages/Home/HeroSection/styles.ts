@@ -11,7 +11,8 @@ export const HeroSectionContainer = styled("section", {
   backgroundColor: "$gray100",
 
   "@md": {
-    marginTop: 68,
+    height: "max-content",
+    background: "initial",
   },
 });
 
@@ -71,6 +72,11 @@ export const Box = styled(Wrapper, {
 
   "@md": {
     padding: "1rem",
+
+    ".scrolldown": {
+      display: "none",
+    },
+
     p: {
       fontSize: "$2xl",
     },

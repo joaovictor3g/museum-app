@@ -42,6 +42,14 @@ export const RadioGroupItem = styled(RadioGroup.Item, {
       right: -1,
     },
   },
+
+  "@md": {
+    fontSize: "$md",
+
+    svg: {
+      display: "none",
+    },
+  },
 });
 
 export const RadioGroupIndicator = styled(RadioGroup.Indicator, {

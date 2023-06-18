@@ -4,6 +4,10 @@ import { styled } from "@/styles";
 export const WorksOfArtSectionContainer = styled("section", {
   marginTop: 216,
   padding: "2rem 0",
+
+  "@md": {
+    marginTop: 50,
+  },
 });
 
 export const Box = styled(Wrapper, {
@@ -18,6 +22,7 @@ export const Box = styled(Wrapper, {
     flexDirection: "column",
     gap: "1.5rem",
     width: "100%",
+    padding: "0.5rem",
 
     ".results-pagination": {
       display: "flex",
@@ -48,6 +53,20 @@ export const Box = styled(Wrapper, {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+      },
+    },
+
+    "@lg": {
+      padding: "1rem",
+
+      ".grid": {
+        gridTemplateColumns: "1fr 1fr",
+      },
+    },
+
+    "@sm": {
+      ".grid": {
+        gridTemplateColumns: "1fr",
       },
     },
   },

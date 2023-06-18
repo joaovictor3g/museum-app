@@ -16,4 +16,13 @@ export const MansoryContainer = styled("div", {
       borderRadius: 4,
     },
   },
+
+  "@lg": {
+    columnCount: 2,
+    padding: "2rem",
+  },
+
+  "@md": {
+    columnCount: 1,
+  },
 });

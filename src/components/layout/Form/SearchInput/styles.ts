@@ -79,4 +79,16 @@ export const SearchInputContainer = styled("div", {
 
     padding: "1.5rem",
   },
+
+  "@md": {
+    ".filter": {
+      display: "none",
+      fontSize: "$md",
+      minWidth: 50,
+
+      svg: {
+        flex: 1,
+      },
+    },
+  },
 });
