@@ -61,7 +61,7 @@ export const PaginationNumbers = styled("div", {
 export const Arrows = styled("div", {
   display: "flex",
   alignItems: "center",
-  gap: 2,
+  gap: 8,
   zIndex: 1,
 
   button: {

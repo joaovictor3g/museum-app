@@ -50,7 +50,13 @@ export function WorksOfArtSection() {
         {!!searchedWorks && (
           <div className="searched-works">
             <div className="results-pagination">
-              <strong>Resultados ({totalSearchedWorks})</strong>
+              <strong>
+                Resultados (
+                {new Intl.NumberFormat("pt-BR", { style: "decimal" }).format(
+                  totalSearchedWorks
+                )}
+                )
+              </strong>
               <Pagination
                 onChange={handleChangePage}
                 page={page}

@@ -6,7 +6,6 @@ export const SectionOtherWorksContainer = styled("section", {
   display: "flex",
   flexDirection: "column",
   gap: 24,
-  padding: "1rem",
 
   h1: {
     fontFamily: "var(--inter)",
@@ -16,7 +15,16 @@ export const SectionOtherWorksContainer = styled("section", {
     fontStyle: "normal",
   },
 
-  "@md": {
+  "@xl": {
+    padding: "1rem",
     marginTop: 50,
   },
+});
+
+export const LoadingContainer = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+
+  minHeight: 300,
 });

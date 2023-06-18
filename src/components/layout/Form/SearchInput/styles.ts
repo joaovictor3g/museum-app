@@ -41,13 +41,18 @@ export const Box = styled("form", {
 
   "@md": {
     ".submit-mobile": {
-      display: "initial",
       height: 64,
       width: "100%",
       border: "none",
       borderTop: "1px solid $gray90",
       backgroundColor: "$gray20",
       color: "$gray90",
+      fontSize: "$normal",
+
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "1rem",
 
       "&:disabled": {
         cursor: "not-allowed",
@@ -110,14 +115,19 @@ export const SearchInputContainer = styled("div", {
   },
 
   "@md": {
+    svg: {
+      display: "none",
+    },
+
+    input: {
+      marginLeft: 0,
+      fontSize: "$normal",
+    },
+
     ".filter": {
       display: "none",
       fontSize: "$md",
       minWidth: 50,
-
-      svg: {
-        flex: 1,
-      },
     },
   },
 });

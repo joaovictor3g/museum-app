@@ -1,16 +1,28 @@
 import { WorkBox } from "@/components/layout";
-import { SectionOtherWorksContainer } from "./styles";
+import { LoadingContainer, SectionOtherWorksContainer } from "./styles";
 import { useWorks } from "@/hooks/useWorks";
 import { WorksGridContainer } from "@/components/styled";
+import { Loading } from "@/components/layout/Loading";
 
 interface SectionOtherWorksProps {
   author: string;
 }
 
 export function SectionOtherWorks({ author }: SectionOtherWorksProps) {
-  const { works } = useWorks({ params: { artistsOrCulture: true, q: author } });
+  const { works, loading } = useWorks({
+    params: { artistsOrCulture: true, q: author },
+  });
 
-  if (!works || works.length === 0) return null;
+  if (loading) {
+    return (
+      <LoadingContainer>
+        <Loading />
+      </LoadingContainer>
+    );
+  }
+
+  if (!works || works.length === 0)
+    return <strong>Nenhuma outra obra encontrada para este autor</strong>;
 
   return (
     <SectionOtherWorksContainer>

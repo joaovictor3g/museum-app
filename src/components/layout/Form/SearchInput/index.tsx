@@ -56,12 +56,20 @@ export function SearchInput() {
           )}
         </button>
       </SearchInputContainer>
+
       <div className={`radio-container ${expandRadio ? "radio-expanded" : ""}`}>
         <RadioGroup value={searchBy} onValueChange={setSearchBy} />
       </div>
 
       <button type="submit" className="submit-mobile" disabled={loading}>
-        {loading ? <Loading size="20px" /> : <>Buscar</>}
+        {loading ? (
+          <Loading size="20px" />
+        ) : (
+          <>
+            Buscar
+            <Search size={18} />
+          </>
+        )}
       </button>
     </Box>
   );
