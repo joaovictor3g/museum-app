@@ -2,7 +2,9 @@ import { Work } from "@/@types/work";
 import { Box, SectionInfos } from "@/components/pages/WorkDetail";
 import { SectionOtherWorks } from "@/components/pages/WorkDetail/SectionOtherWorks";
 import { MainInfoContainer, Wrapper } from "@/components/styled";
+import { ids } from "@/constants/ids";
 import { api } from "@/services/api";
+import { loadWorks } from "@/services/load-works";
 import { addEllipsisOnStringBiggerThan50 } from "@/utils";
 import { ArrowLeft } from "lucide-react";
 import { GetStaticProps, GetStaticPaths } from "next";
@@ -17,7 +19,10 @@ export default function WorkDetail({ work }: WorkDetailProps) {
   return (
     <>
       <Head>
-        <title>Work</title>
+        <title>{work.name}</title>
+        <meta name="og:image" content="/banner.png" />
+        <meta name="image" property="og:image" content="/banner.png" />
+        <meta name="og:title" content={work.name} />
       </Head>
       <div>
         <MainInfoContainer>
@@ -38,8 +43,10 @@ export default function WorkDetail({ work }: WorkDetailProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const works = await loadWorks(ids);
+
   return {
-    paths: [],
+    paths: works?.map((work) => ({ params: { id: String(work.id) } })) ?? [],
     fallback: "blocking",
   };
 };

@@ -8,11 +8,9 @@ import Link from "next/link";
 import { useSearch } from "@/hooks/useSearch";
 import { Pagination, WorkBox } from "@/components/layout";
 import { Loading } from "@/components/layout/Loading";
-import Image from "next/image";
+import { ids } from "@/constants/ids";
 
-const requests = [
-  231980, 470311, 208898, 469857, 207665, 189425, 472353, 471179, 205431,
-].map((id) => api.get(`/objects/${id}`));
+const requests = ids.map((id) => api.get(`/objects/${id}`));
 
 export function WorksOfArtSection() {
   const [works, setWorks] = useState<Work[]>([]);
