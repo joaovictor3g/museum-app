@@ -2,7 +2,7 @@ import { ImageSelector } from "@/components/layout/ImageSelector";
 import { Box } from "./styles";
 import { Work } from "@/@types/work";
 import { Heart } from "lucide-react";
-import { CollaboratorsSlider, Tooltip } from "@/components/layout";
+import { CollaboratorsSlider, Toast, Tooltip } from "@/components/layout";
 import { key } from "@/constants/localStorage";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useState } from "react";
@@ -12,6 +12,12 @@ interface SectionInfosProps {
 }
 
 export function SectionInfos({ work }: SectionInfosProps) {
+  const [toastProps, setToastProps] = useState({
+    open: false,
+    error: false,
+    description: "",
+  });
+
   const { storage, set } = useLocalStorage<number[]>(key);
   const hasWorkinStorage = storage?.includes(work.id);
 
@@ -20,7 +26,19 @@ export function SectionInfos({ work }: SectionInfosProps) {
     if (hasWorkinStorage) {
       const removedIds = inStorageIDs.filter((storageID) => storageID !== id);
       set(key, removedIds);
-    } else set(key, [...inStorageIDs, id]);
+      setToastProps((currentToastProps) => ({
+        ...currentToastProps,
+        description: "Você acaba de desfavoritar esta obra!",
+        open: true,
+      }));
+    } else {
+      set(key, [...inStorageIDs, id]);
+      setToastProps((currentToastProps) => ({
+        ...currentToastProps,
+        description: "Você acaba de favoritar esta obra!",
+        open: true,
+      }));
+    }
   }
 
   return (
@@ -75,6 +93,15 @@ export function SectionInfos({ work }: SectionInfosProps) {
           slides={work.constituents?.map((constituent) => constituent.name)}
         />
       </div>
+
+      <Toast
+        open={toastProps.open}
+        onOpenChange={() =>
+          setToastProps((current) => ({ ...current, open: false }))
+        }
+        description={<>{toastProps.description}</>}
+        status={toastProps.error ? "error" : "success"}
+      />
     </Box>
   );
 }

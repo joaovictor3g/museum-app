@@ -37,6 +37,7 @@ export const TooltipContent = styled(Tooltip.Content, {
   color: "$grayMain",
   fontSize: "$md",
   fontWeight: 400,
+  fontFamily: "var(--inter)",
 
   userSelect: "none",
   animationDuration: "400ms",
