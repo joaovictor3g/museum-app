@@ -1,15 +1,20 @@
 import { useEffect, useState } from "react";
 import { RadioGroup } from "../RadioGroup";
 import { Box, SearchInputContainer } from "./styles";
-import { Search, ChevronDown } from "lucide-react";
+import { Search, ChevronDown, X } from "lucide-react";
 import { useSearch } from "@/hooks/useSearch";
+import { Loading } from "../../Loading";
 
 export function SearchInput() {
   const [expandRadio, setExpandRadio] = useState(false);
-  const { handleSearch, page } = useSearch();
+  const { handleSearch, page, loading } = useSearch();
 
   const [q, setQ] = useState("");
   const [searchBy, setSearchBy] = useState("");
+
+  function handleClear() {
+    setQ("");
+  }
 
   useEffect(() => {
     handleSearch(q, searchBy);
@@ -31,12 +36,24 @@ export function SearchInput() {
           value={q}
           onChange={(e) => setQ(e.target.value)}
         />
+        {q.length > 0 && (
+          <button type="button" className="clear" onClick={handleClear}>
+            <X size={18} />
+          </button>
+        )}
         <button
           type="button"
           onClick={() => setExpandRadio((current) => !current)}
+          className="filter"
         >
-          Filtro
-          <ChevronDown className="icon" />
+          {loading ? (
+            <Loading size="20px" />
+          ) : (
+            <>
+              Filtro
+              <ChevronDown className="icon" />
+            </>
+          )}
         </button>
       </SearchInputContainer>
       {expandRadio ? (

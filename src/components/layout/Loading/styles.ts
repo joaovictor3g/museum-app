@@ -10,8 +10,8 @@ const rotation = keyframes({
 });
 
 export const LoadingContainer = styled("div", {
-  width: "48px",
-  height: "48px",
+  width: "var(--size)",
+  height: "var(--size)",
   borderRadius: "50%",
   display: "inline-block",
   borderTop: "4px solid $gray10",
@@ -23,8 +23,8 @@ export const LoadingContainer = styled("div", {
     position: "absolute",
     left: "0",
     top: "0",
-    width: "48px",
-    height: "48px",
+    width: "var(--size)",
+    height: "var(--size)",
     borderRadius: "50%",
     borderBottom: "4px solid $primaryMain",
     borderLeft: "4px solid transparent",

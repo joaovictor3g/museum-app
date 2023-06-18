@@ -49,8 +49,20 @@ export const SearchInputContainer = styled("div", {
     marginLeft: 19,
   },
 
-  button: {
+  ".clear": {
+    backgroundColor: "transparent",
+    color: "$gray50",
+    border: "none",
+    marginRight: 30,
+
+    "&:hover": {
+      color: "$gray30",
+    },
+  },
+
+  ".filter": {
     justifySelf: "end",
+    minWidth: 132,
 
     backgroundColor: "$gray90",
     border: "none",
@@ -58,6 +70,7 @@ export const SearchInputContainer = styled("div", {
 
     display: "flex",
     alignItems: "center",
+    justifyContent: "center",
     gap: "1rem",
 
     color: "$gray20",

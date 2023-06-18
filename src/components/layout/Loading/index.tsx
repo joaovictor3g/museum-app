@@ -1,5 +1,9 @@
 import { LoadingContainer } from "./styles";
 
-export function Loading() {
-  return <LoadingContainer></LoadingContainer>;
+interface LoadingProps {
+  size?: string;
+}
+
+export function Loading({ size = "48px" }: LoadingProps) {
+  return <LoadingContainer css={{ "--size": size }} />;
 }
