@@ -22,17 +22,48 @@ export const CollaboratorsSliderContainer = styled("div", {
     },
   },
 
-  ".keen-slider": {
-    "&__slide": {
-      maxWidth: "initial !important",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      backgroundColor: "$gray90",
-      color: "$gray10",
-      padding: "8px 16px",
-      borderRadius: 4,
-      // whiteSpace: "nowrap",
-    },
+  ".slide": {
+    whiteSpace: "nowrap",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "$gray90",
+    color: "$gray10",
+    padding: "8px 16px",
+    borderRadius: 4,
   },
+
+  ".keen-slider": {
+    width: "100%",
+    "&__slide": {},
+  },
+
+  // "@xl": {
+  //   ".keen-slider": {
+  //     minWidth: 1000,
+  //     maxWidth: 1216,
+  //   },
+  // },
+
+  // "@lg": {
+  //   ".keen-slider": {
+  //     minWidth: 768,
+  //     maxWidth: 968,
+  //   },
+  // },
+
+  // "@md": {
+  //   ".keen-slider": {
+  //     margin: "0 auto",
+  //     minWidth: 500,
+  //     maxWidth: 730,
+  //   },
+  // },
+
+  // "@sm": {
+  //   ".keen-slider": {
+  //     minWidth: 300,
+  //     maxWidth: 468,
+  //   },
+  // },
 });

@@ -1,35 +1,66 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { CollaboratorsSliderContainer } from "./styles";
 
-import "keen-slider/keen-slider.min.css";
-import { KeenSliderOptions, useKeenSlider } from "keen-slider/react";
-import { useEffect, useMemo, useState } from "react";
+import { KeenSliderPlugin, useKeenSlider } from "keen-slider/react";
+import { useEffect, useState } from "react";
 
+import "keen-slider/keen-slider.min.css";
 interface CollaboratorsSliderProps {
   slides?: string[];
 }
 
+const ResizePlugin: KeenSliderPlugin = (slider) => {
+  const observer = new ResizeObserver(function () {
+    slider.update();
+    console.log("resizing...");
+  });
+
+  slider.on("created", () => {
+    observer.observe(slider.container);
+  });
+  slider.on("destroyed", () => {
+    observer.unobserve(slider.container);
+  });
+};
+
 export function CollaboratorsSlider({ slides }: CollaboratorsSliderProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const sliderOptions: KeenSliderOptions = useMemo(
-    () => ({
+  const [sliderRef, instanceRef] = useKeenSlider(
+    {
+      initial: 0,
       slides: {
+        perView: 1.1,
         spacing: 8,
-        perView: 2.1,
       },
       slideChanged(slider) {
         setCurrentSlide(slider.track.details.rel);
       },
-    }),
-    []
+      breakpoints: {
+        "(max-width: 1248px)": {
+          slides: {
+            perView: 3.1,
+            spacing: 8,
+          },
+        },
+
+        "(max-width: 950px)": {
+          slides: {
+            perView: 2.1,
+            spacing: 8,
+          },
+        },
+
+        "(max-width: 650px)": {
+          slides: {
+            perView: 1.1,
+            spacing: 8,
+          },
+        },
+      },
+    },
+    [ResizePlugin]
   );
-
-  const [sliderRef, instanceRef] = useKeenSlider(sliderOptions);
-
-  useEffect(() => {
-    instanceRef.current?.update();
-  }, [instanceRef, sliderOptions]);
 
   if (!slides) {
     return <span>Não foram encontrados contribuintes</span>;
@@ -61,9 +92,9 @@ export function CollaboratorsSlider({ slides }: CollaboratorsSliderProps) {
 
       <div ref={sliderRef} className="keen-slider">
         {slides.map((slide) => (
-          <span key={slide} className="keen-slider__slide">
-            {slide}
-          </span>
+          <div key={slide} className="keen-slider__slide">
+            <span className="slide">{slide}</span>
+          </div>
         ))}
       </div>
     </CollaboratorsSliderContainer>

@@ -40,6 +40,10 @@ export const Box = styled("section", {
       fontWeight: 700,
       fontSize: "$2xl",
       color: "$gray10",
+
+      "@md": {
+        fontSize: "$xl",
+      },
     },
 
     ".createAt": {
@@ -86,6 +90,6 @@ export const Box = styled("section", {
 
   "@xl": {
     padding: "1rem",
-    gridTemplateColumns: "1fr",
+    gridTemplateColumns: "100%",
   },
 });

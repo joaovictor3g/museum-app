@@ -61,7 +61,12 @@ export const ImageSelectorContainer = styled("div", {
     },
 
     ".main-image": {
+      maxWidth: 700,
       width: "100%",
+
+      img: {
+        objectFit: "contain",
+      },
     },
   },
 });
