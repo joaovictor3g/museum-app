@@ -7,6 +7,8 @@ import { Work } from "@/@types/work";
 import Link from "next/link";
 import { useSearch } from "@/hooks/useSearch";
 import { Pagination, WorkBox } from "@/components/layout";
+import { Loading } from "@/components/layout/Loading";
+import Image from "next/image";
 
 const requests = [
   231980, 470311, 208898, 469857, 207665, 189425, 472353, 471179, 205431,
@@ -20,6 +22,7 @@ export function WorksOfArtSection() {
     total: totalSearchedWorks,
     handleChangePage,
     page,
+    loading,
   } = useSearch();
 
   async function getImageWorks() {
@@ -46,7 +49,7 @@ export function WorksOfArtSection() {
   return (
     <WorksOfArtSectionContainer id="worksOfArt">
       <Box>
-        {!!searchedWorks ? (
+        {!!searchedWorks && (
           <div className="searched-works">
             <div className="results-pagination">
               <strong>Resultados ({totalSearchedWorks})</strong>
@@ -56,13 +59,20 @@ export function WorksOfArtSection() {
                 totalPages={Math.ceil(totalSearchedWorks / 9)}
               />
             </div>
-            <div className="grid">
-              {searchedWorks.map((work) => (
-                <WorkBox key={work.id} work={work} />
-              ))}
+            <div className={`grid ${loading ? "loading" : ""}`}>
+              {loading ? (
+                <div className="loading-container">
+                  <Loading />
+                </div>
+              ) : (
+                searchedWorks.map((work) => (
+                  <WorkBox key={work.id} work={work} />
+                ))
+              )}
             </div>
           </div>
-        ) : (
+        )}
+        {!searchedWorks && (
           <>
             <h1>Veja algumas obras</h1>
 
@@ -70,7 +80,7 @@ export function WorksOfArtSection() {
               {works.map((work) => (
                 <Link href={`/work/${work.id}`} key={work.id}>
                   <figure>
-                    <img src={work.image} alt="" />
+                    <img src={work.image} alt={work.name} />
 
                     <div className="work-info">
                       <strong className="work-info-name" title={work.fullName}>

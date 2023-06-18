@@ -1,5 +1,6 @@
 import { Work } from "@/@types/work";
 import { api } from "./api";
+import { addEllipsisOnStringBiggerThan50 } from "@/utils";
 
 export async function loadWorks(ids: number[]) {
   const makeRequests = ids.map((id) => api.get(`/objects/${id}`));
@@ -12,10 +13,7 @@ export async function loadWorks(ids: number[]) {
       .map<Work>(({ value }: any) => ({
         id: value.data.objectID,
         image: value.data.primaryImageSmall,
-        name:
-          value.data.title.length > 50
-            ? value.data.title.substring(0, 50).concat("...")
-            : value.data.title,
+        name: addEllipsisOnStringBiggerThan50(value.data.title),
         fullName: value.data.title,
         author: value.data.artistDisplayName,
         additionalImages: value.data.additionalImages,

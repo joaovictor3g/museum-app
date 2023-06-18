@@ -2,8 +2,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { CollaboratorsSliderContainer } from "./styles";
 
 import "keen-slider/keen-slider.min.css";
-import { useKeenSlider } from "keen-slider/react";
-import { useState } from "react";
+import { KeenSliderOptions, useKeenSlider } from "keen-slider/react";
+import { useEffect, useMemo, useState } from "react";
 
 interface CollaboratorsSliderProps {
   slides?: string[];
@@ -12,15 +12,24 @@ interface CollaboratorsSliderProps {
 export function CollaboratorsSlider({ slides }: CollaboratorsSliderProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const [sliderRef, instanceRef] = useKeenSlider({
-    slides: {
-      spacing: 8,
-      perView: 2.1,
-    },
-    slideChanged(slider) {
-      setCurrentSlide(slider.track.details.rel);
-    },
-  });
+  const sliderOptions: KeenSliderOptions = useMemo(
+    () => ({
+      slides: {
+        spacing: 8,
+        perView: 2.1,
+      },
+      slideChanged(slider) {
+        setCurrentSlide(slider.track.details.rel);
+      },
+    }),
+    []
+  );
+
+  const [sliderRef, instanceRef] = useKeenSlider(sliderOptions);
+
+  useEffect(() => {
+    instanceRef.current?.update();
+  }, [instanceRef, sliderOptions]);
 
   if (!slides) {
     return <span>Não foram encontrados contribuintes</span>;

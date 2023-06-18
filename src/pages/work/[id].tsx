@@ -3,6 +3,7 @@ import { Box, SectionInfos } from "@/components/pages/WorkDetail";
 import { SectionOtherWorks } from "@/components/pages/WorkDetail/SectionOtherWorks";
 import { MainInfoContainer, Wrapper } from "@/components/styled";
 import { api } from "@/services/api";
+import { addEllipsisOnStringBiggerThan50 } from "@/utils";
 import { ArrowLeft } from "lucide-react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
@@ -53,7 +54,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       work: {
         ...work,
-        name: work.title.substring(0, 50).concat("..."),
+        name: addEllipsisOnStringBiggerThan50(work.title),
         fullName: work.title,
         id: work.objectID,
         image: work.primaryImage,

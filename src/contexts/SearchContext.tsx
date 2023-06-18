@@ -21,6 +21,7 @@ interface SearchContextProps {
   works?: Work[];
   total: number;
   page: number;
+  loading: boolean;
 }
 
 export const SearchContext = createContext({} as SearchContextProps);
@@ -29,33 +30,35 @@ export function SearchProvider({ children }: SearchProviderProps) {
   const [works, setWorks] = useState<Work[]>();
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
-  const handleSearch = useCallback(
-    async (query: string, option: string) => {
-      try {
-        const response = await api.get<{
-          objectIDs: number[];
-        }>("/search", {
-          params: {
-            artistOrCulture: option === "artistOrCulture" ? true : undefined,
-            geoLocation: option === "geoLocation" ? query : undefined,
-            title: option === "title" ? true : undefined,
-            q: query,
-          },
-        });
+  const handleSearch = async (query: string, option: string) => {
+    setLoading(true);
+    try {
+      const response = await api.get<{
+        objectIDs: number[];
+      }>("/search", {
+        params: {
+          artistOrCulture: option === "artistOrCulture" ? true : undefined,
+          geoLocation: option === "geoLocation" ? query : undefined,
+          title: option === "title" ? true : undefined,
+          q: query,
+        },
+      });
 
-        const { objectIDs } = response.data;
+      const { objectIDs } = response.data;
 
-        if (!objectIDs) return;
+      if (!objectIDs) return;
 
-        setTotal(objectIDs.length);
-        const onlyFirstThreeIDs = objectIDs.slice((page - 1) * 9, 9 * page);
-        const works = await loadWorks(onlyFirstThreeIDs);
-        setWorks(works);
-      } catch {}
-    },
-    [page]
-  );
+      setTotal(objectIDs.length);
+      const onlyFirstThreeIDs = objectIDs.slice((page - 1) * 9, 9 * page);
+      const works = await loadWorks(onlyFirstThreeIDs);
+      setWorks(works);
+    } catch {
+    } finally {
+      setLoading(false);
+    }
+  };
 
   function handleChangePage(page: number) {
     setPage(page);
@@ -69,6 +72,7 @@ export function SearchProvider({ children }: SearchProviderProps) {
         works,
         total,
         page,
+        loading,
       }}
     >
       {children}

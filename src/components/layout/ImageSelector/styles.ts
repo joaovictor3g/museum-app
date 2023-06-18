@@ -41,6 +41,13 @@ export const ImageSelectorContainer = styled("div", {
     overflow: "hidden",
     borderRadius: "$md",
 
+    ".loading-container": {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      height: "100%",
+    },
+
     img: {
       objectFit: "fill",
     },

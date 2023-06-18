@@ -17,6 +17,7 @@ export const Box = styled(Wrapper, {
     display: "flex",
     flexDirection: "column",
     gap: "1.5rem",
+    width: "100%",
 
     ".results-pagination": {
       display: "flex",
@@ -35,6 +36,19 @@ export const Box = styled(Wrapper, {
       display: "grid",
       gridTemplateColumns: "repeat(3, 1fr)",
       gap: "1rem",
+
+      "&.loading": {
+        gridTemplateColumns: "1fr",
+        placeContent: "center",
+      },
+
+      ".loading-container": {
+        minHeight: 400,
+
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      },
     },
   },
 

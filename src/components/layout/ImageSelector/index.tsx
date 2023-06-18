@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ImageSelectorContainer } from "./styles";
 
 import Image from "next/image";
@@ -11,13 +11,15 @@ interface ImageSelectorProps {
 
 export function ImageSelector({ images, mainImage }: ImageSelectorProps) {
   const sideImages = [mainImage, ...images].slice(0, 5);
-
   const [mainImageView, setMainImageView] = useState(mainImage);
-  const [mainImageLoading, setMainImageLoading] = useState(true);
 
   function handleImageClick(image: string) {
     setMainImageView(sideImages.find((_image) => _image === image) ?? "");
   }
+
+  useEffect(() => {
+    setMainImageView(mainImage);
+  }, [mainImage]);
 
   return (
     <ImageSelectorContainer>
@@ -33,13 +35,14 @@ export function ImageSelector({ images, mainImage }: ImageSelectorProps) {
         ))}
       </div>
       <div className="main-image">
-        {/* {mainImageLoading ? <Loading /> : null} */}
         <Image
           src={mainImageView}
-          onLoadingComplete={(image) => setMainImageLoading(false)}
+          // onLoadingComplete={() => setMainImageLoading(false)}
           alt=""
           width={400}
           height={200}
+          placeholder="blur"
+          blurDataURL="/blur.png"
         />
       </div>
     </ImageSelectorContainer>

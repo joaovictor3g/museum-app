@@ -20,7 +20,7 @@ export function SearchInput() {
       className={expandRadio ? "expanded" : ""}
       onSubmit={async (e) => {
         e.preventDefault();
-        handleSearch(q, searchBy);
+        await handleSearch(q, searchBy);
       }}
     >
       <SearchInputContainer>
