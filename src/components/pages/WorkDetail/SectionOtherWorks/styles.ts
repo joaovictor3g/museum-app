@@ -2,7 +2,6 @@ import { Wrapper } from "@/components/styled";
 import { styled } from "@/styles";
 
 export const SectionOtherWorksContainer = styled("section", {
-  marginTop: 216,
   display: "flex",
   flexDirection: "column",
   gap: 24,

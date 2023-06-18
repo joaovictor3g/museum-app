@@ -32,7 +32,7 @@ export function SearchInput() {
         <Search />
         <input
           type="text"
-          placeholder="Busque por obras, artistas ou locais"
+          placeholder="Busque obras por artistas, títulos ou locais"
           value={q}
           onChange={(e) => setQ(e.target.value)}
         />

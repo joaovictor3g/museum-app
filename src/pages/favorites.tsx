@@ -44,32 +44,34 @@ export default function Favorites() {
         </MainInfoContainer>
         <section id="favorites">
           <Box>
-            {(works?.length ?? 0) > 0 ? (
-              <>
-                <strong className="works-total">
-                  Número total de obras: {works?.length ?? 0}
-                </strong>
-
-                {loading && (
-                  <div className="loading-container">
-                    <Loading />
-                  </div>
-                )}
-
-                <WorksGridContainer>
-                  {!!works &&
-                    !loading &&
-                    works.map((work) => <WorkBox key={work.id} work={work} />)}
-                </WorksGridContainer>
-              </>
-            ) : (
-              !loading && (
-                <EmptyState
-                  message="Você ainda não favoritou nenhuma arte."
-                  img={emptyImg}
-                />
-              )
+            {loading && (
+              <div className="loading-container">
+                <Loading />
+              </div>
             )}
+
+            {works && works.length > 0
+              ? !loading && (
+                  <>
+                    <strong className="works-total">
+                      Número total de obras: {works?.length ?? 0}
+                    </strong>
+
+                    <WorksGridContainer>
+                      {!!works &&
+                        !loading &&
+                        works.map((work) => (
+                          <WorkBox key={work.id} work={work} />
+                        ))}
+                    </WorksGridContainer>
+                  </>
+                )
+              : !loading && (
+                  <EmptyState
+                    message="Você ainda não favoritou nenhuma arte."
+                    img={emptyImg}
+                  />
+                )}
           </Box>
         </section>
       </Container>

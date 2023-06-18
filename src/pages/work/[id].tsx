@@ -1,7 +1,7 @@
 import { Work } from "@/@types/work";
 import { Box, SectionInfos } from "@/components/pages/WorkDetail";
 import { SectionOtherWorks } from "@/components/pages/WorkDetail/SectionOtherWorks";
-import { MainInfoContainer, Wrapper } from "@/components/styled";
+import { MainInfoContainer, Separator, Wrapper } from "@/components/styled";
 import { ids } from "@/constants/ids";
 import { api } from "@/services/api";
 import { loadWorks } from "@/services/load-works";
@@ -35,6 +35,7 @@ export default function WorkDetail({ work }: WorkDetailProps) {
         </MainInfoContainer>
         <Box>
           <SectionInfos work={work} />
+          <Separator css={{ "--margin": "72px" }} />
           <SectionOtherWorks author={work.author} />
         </Box>
       </div>
