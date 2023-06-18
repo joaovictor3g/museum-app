@@ -8,6 +8,7 @@ export const FooterContainer = styled("footer", {
 
   backgroundColor: "$gray100",
   backdropFilter: "blur(24px)",
+  padding: "0 1rem",
 
   span: {
     fontFamily: "var(--inter)",
