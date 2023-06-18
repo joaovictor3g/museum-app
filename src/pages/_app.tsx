@@ -6,6 +6,7 @@ import { globalStyles } from "@/styles/global";
 import { Header } from "@/components/layout";
 
 import "@/styles/global.css";
+import { Footer } from "@/components/layout/Footer";
 
 globalStyles();
 
@@ -43,6 +44,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <main>
         <Component {...pageProps} />
       </main>
+      <Footer />
     </div>
   );
 }
