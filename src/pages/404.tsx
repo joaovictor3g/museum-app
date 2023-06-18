@@ -4,6 +4,7 @@ import Image from "next/image";
 import notFoundImg from "@/assets/404.png";
 import Head from "next/head";
 import Link from "next/link";
+import { Blur2 } from "@/components/styled";
 
 export default function NotFound() {
   return (
@@ -20,6 +21,7 @@ export default function NotFound() {
         <Link href="/" className="back-home">
           Voltar a tela inicial
         </Link>
+        <Blur2 />
       </NotFoundContainer>
     </>
   );

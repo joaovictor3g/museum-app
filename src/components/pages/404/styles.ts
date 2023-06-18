@@ -6,6 +6,7 @@ export const NotFoundContainer = styled("div", {
   justifyContent: "center",
   flexDirection: "column",
   gap: "2rem",
+  position: "relative",
 
   height: "calc(100vh - 160px)",
 
