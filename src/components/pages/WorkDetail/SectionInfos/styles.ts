@@ -83,4 +83,9 @@ export const Box = styled("section", {
       backgroundColor: "$gray90",
     },
   },
+
+  "@xl": {
+    padding: "1rem",
+    gridTemplateColumns: "1fr",
+  },
 });

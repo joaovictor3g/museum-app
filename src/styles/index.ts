@@ -60,5 +60,6 @@ export const {
     sm: "(max-width: 500px)",
     md: "(max-width: 768px)",
     lg: "(max-width: 1000px)",
+    xl: "(max-width: 1248px)",
   },
 });

@@ -15,16 +15,45 @@ export const Box = styled("form", {
     },
   },
 
-  ".options": {
-    height: 64,
-    width: "100%",
-    backgroundColor: "$gray100",
+  ".radio-container": {
+    display: "none",
     borderTop: "inherit",
+    transition: "height 0.2s",
+
+    "&.radio-expanded": {
+      display: "initial",
+      height: 64,
+    },
+
+    "@md": {
+      display: "initial",
+    },
   },
 
   "&:hover": {
     border: "1px solid $gray70",
     color: "$gray30",
+  },
+
+  ".submit-mobile": {
+    display: "none",
+  },
+
+  "@md": {
+    ".submit-mobile": {
+      display: "initial",
+      height: 64,
+      width: "100%",
+      border: "none",
+      borderTop: "1px solid $gray90",
+      backgroundColor: "$gray20",
+      color: "$gray90",
+
+      "&:disabled": {
+        cursor: "not-allowed",
+        opacity: 0.8,
+      },
+    },
   },
 });
 

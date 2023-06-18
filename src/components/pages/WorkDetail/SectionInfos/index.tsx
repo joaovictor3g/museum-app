@@ -12,6 +12,7 @@ export function SectionInfos({ work }: SectionInfosProps) {
   return (
     <Box>
       <ImageSelector images={work?.additionalImages} mainImage={work.image} />
+
       <div className="work-infos">
         <header>
           <small className="category">Obra de arte</small>

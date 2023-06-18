@@ -6,6 +6,7 @@ export const SectionOtherWorksContainer = styled("section", {
   display: "flex",
   flexDirection: "column",
   gap: 24,
+  padding: "1rem",
 
   h1: {
     fontFamily: "var(--inter)",
@@ -19,5 +20,12 @@ export const SectionOtherWorksContainer = styled("section", {
     display: "grid",
     gridTemplateColumns: "repeat(3, 1fr)",
     gap: "1.5rem",
+  },
+
+  "@md": {
+    marginTop: 50,
+    ".works": {
+      gridTemplateColumns: "1fr",
+    },
   },
 });

@@ -2,7 +2,7 @@ import { styled } from "@/styles";
 
 export const MainInfoContainer = styled("div", {
   backgroundColor: "$gray100",
-  padding: "2rem 0",
+  padding: "2rem 1rem",
 
   a: {
     display: "flex",

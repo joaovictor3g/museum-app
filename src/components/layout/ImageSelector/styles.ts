@@ -52,4 +52,16 @@ export const ImageSelectorContainer = styled("div", {
       objectFit: "fill",
     },
   },
+
+  "@md": {
+    gridTemplateColumns: "1fr",
+
+    ".images-to-select": {
+      display: "none",
+    },
+
+    ".main-image": {
+      width: "100%",
+    },
+  },
 });
