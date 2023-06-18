@@ -38,10 +38,6 @@ export const Box = styled(Wrapper, {
     },
 
     ".grid": {
-      display: "grid",
-      gridTemplateColumns: "repeat(3, 1fr)",
-      gap: "1rem",
-
       "&.loading": {
         gridTemplateColumns: "1fr",
         placeContent: "center",
@@ -53,20 +49,6 @@ export const Box = styled(Wrapper, {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-      },
-    },
-
-    "@lg": {
-      padding: "1rem",
-
-      ".grid": {
-        gridTemplateColumns: "1fr 1fr",
-      },
-    },
-
-    "@sm": {
-      ".grid": {
-        gridTemplateColumns: "1fr",
       },
     },
   },

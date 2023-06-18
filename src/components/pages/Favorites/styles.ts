@@ -5,7 +5,7 @@ export const Box = styled(Wrapper, {
   display: "flex",
   flexDirection: "column",
   gap: "1rem",
-  paddingBottom: "1rem",
+  padding: "1rem",
 
   ".page-title": {
     fontFamily: "var(--pp-hatton)",
@@ -25,10 +25,11 @@ export const Box = styled(Wrapper, {
     width: "100%",
   },
 
-  ".works": {
-    display: "grid",
-    gridTemplateColumns: "repeat(3,1fr)",
-    gap: "1rem",
+  ".loading-container": {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "200px",
   },
 });
 

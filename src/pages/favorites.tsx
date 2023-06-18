@@ -1,7 +1,8 @@
 import { Work } from "@/@types/work";
 import { WorkBox } from "@/components/layout";
+import { Loading } from "@/components/layout/Loading";
 import { Box, Container } from "@/components/pages/Favorites";
-import { MainInfoContainer } from "@/components/styled";
+import { MainInfoContainer, WorksGridContainer } from "@/components/styled";
 import { key } from "@/constants/localStorage";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { loadWorks } from "@/services/load-works";
@@ -10,11 +11,16 @@ import { useEffect, useState } from "react";
 
 export default function Favorites() {
   const [works, setWorks] = useState<Work[]>();
+  const [loading, setLoading] = useState(false);
+
   const { storage: workIds } = useLocalStorage<number[]>(key);
 
   useEffect(() => {
     if (workIds) {
-      loadWorks(workIds).then((data) => setWorks(data));
+      setLoading(true);
+      loadWorks(workIds)
+        .then((data) => setWorks(data))
+        .finally(() => setLoading(false));
     }
   }, [workIds]);
 
@@ -40,10 +46,17 @@ export default function Favorites() {
               Número total de obras: {works?.length ?? 0}
             </strong>
 
-            <div className="works">
+            {loading && (
+              <div className="loading-container">
+                <Loading />
+              </div>
+            )}
+
+            <WorksGridContainer>
               {!!works &&
+                !loading &&
                 works.map((work) => <WorkBox key={work.id} work={work} />)}
-            </div>
+            </WorksGridContainer>
           </Box>
         </section>
       </Container>

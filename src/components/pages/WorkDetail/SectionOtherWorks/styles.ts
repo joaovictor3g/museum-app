@@ -16,16 +16,7 @@ export const SectionOtherWorksContainer = styled("section", {
     fontStyle: "normal",
   },
 
-  ".works": {
-    display: "grid",
-    gridTemplateColumns: "repeat(3, 1fr)",
-    gap: "1.5rem",
-  },
-
   "@md": {
     marginTop: 50,
-    ".works": {
-      gridTemplateColumns: "1fr",
-    },
   },
 });

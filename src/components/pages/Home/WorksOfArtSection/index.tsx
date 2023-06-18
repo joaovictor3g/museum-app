@@ -1,4 +1,4 @@
-import { MansoryContainer } from "@/components/styled";
+import { MansoryContainer, WorksGridContainer } from "@/components/styled";
 import { Box, WorksOfArtSectionContainer } from "./styles";
 
 import { useEffect, useState } from "react";
@@ -59,7 +59,7 @@ export function WorksOfArtSection() {
                 totalPages={Math.ceil(totalSearchedWorks / 9)}
               />
             </div>
-            <div className={`grid ${loading ? "loading" : ""}`}>
+            <WorksGridContainer className={`grid ${loading ? "loading" : ""}`}>
               {loading ? (
                 <div className="loading-container">
                   <Loading />
@@ -69,7 +69,7 @@ export function WorksOfArtSection() {
                   <WorkBox key={work.id} work={work} />
                 ))
               )}
-            </div>
+            </WorksGridContainer>
           </div>
         )}
         {!searchedWorks && (

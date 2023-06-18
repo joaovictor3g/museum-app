@@ -1,6 +1,7 @@
 import { WorkBox } from "@/components/layout";
 import { SectionOtherWorksContainer } from "./styles";
 import { useWorks } from "@/hooks/useWorks";
+import { WorksGridContainer } from "@/components/styled";
 
 interface SectionOtherWorksProps {
   author: string;
@@ -15,11 +16,11 @@ export function SectionOtherWorks({ author }: SectionOtherWorksProps) {
     <SectionOtherWorksContainer>
       <h1>Outras obras do artista</h1>
 
-      <div className="works">
+      <WorksGridContainer>
         {works.map((work) => (
           <WorkBox key={work.id} work={work} />
         ))}
-      </div>
+      </WorksGridContainer>
     </SectionOtherWorksContainer>
   );
 }
