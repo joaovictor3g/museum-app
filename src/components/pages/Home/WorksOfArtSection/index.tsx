@@ -1,4 +1,8 @@
-import { MansoryContainer, WorksGridContainer } from "@/components/styled";
+import {
+  MansoryContainer,
+  Separator,
+  WorksGridContainer,
+} from "@/components/styled";
 import { Box, WorksOfArtSectionContainer } from "./styles";
 
 import { useEffect, useState } from "react";
@@ -6,9 +10,11 @@ import { api } from "@/services/api";
 import { Work } from "@/@types/work";
 import Link from "next/link";
 import { useSearch } from "@/hooks/useSearch";
-import { Pagination, WorkBox } from "@/components/layout";
+import { EmptyState, Pagination, WorkBox } from "@/components/layout";
 import { Loading } from "@/components/layout/Loading";
 import { ids } from "@/constants/ids";
+
+import emptyStateImg from "@/assets/empty-states/papers.png";
 
 const requests = ids.map((id) => api.get(`/objects/${id}`));
 
@@ -48,35 +54,47 @@ export function WorksOfArtSection() {
     <WorksOfArtSectionContainer id="worksOfArt">
       <Box>
         {!!searchedWorks && (
-          <div className="searched-works">
-            <div className="results-pagination">
-              <strong>
-                Resultados (
-                {new Intl.NumberFormat("pt-BR", { style: "decimal" }).format(
-                  totalSearchedWorks
+          <>
+            <div className="searched-works">
+              <div className="results-pagination">
+                <strong>
+                  Resultados (
+                  {new Intl.NumberFormat("pt-BR", { style: "decimal" }).format(
+                    totalSearchedWorks
+                  )}
+                  )
+                </strong>
+                <Pagination
+                  onChange={handleChangePage}
+                  page={page}
+                  totalPages={Math.ceil(totalSearchedWorks / 9)}
+                />
+              </div>
+              <WorksGridContainer
+                className={`grid ${loading ? "loading" : ""}`}
+              >
+                {loading ? (
+                  <div className="loading-container">
+                    <Loading />
+                  </div>
+                ) : (
+                  searchedWorks.map((work) => (
+                    <WorkBox key={work.id} work={work} />
+                  ))
                 )}
-                )
-              </strong>
-              <Pagination
-                onChange={handleChangePage}
-                page={page}
-                totalPages={Math.ceil(totalSearchedWorks / 9)}
-              />
+              </WorksGridContainer>
             </div>
-            <WorksGridContainer className={`grid ${loading ? "loading" : ""}`}>
-              {loading ? (
-                <div className="loading-container">
-                  <Loading />
-                </div>
-              ) : (
-                searchedWorks.map((work) => (
-                  <WorkBox key={work.id} work={work} />
-                ))
-              )}
-            </WorksGridContainer>
-          </div>
+          </>
         )}
-        {!searchedWorks && (
+
+        {totalSearchedWorks === -1 && (
+          <EmptyState
+            img={emptyStateImg}
+            message="Não foi encontrado nenhuma obra de acordo com os parâmetros de busca."
+          />
+        )}
+
+        {!searchedWorks && totalSearchedWorks === 0 && (
           <>
             <h1>Veja algumas obras</h1>
 

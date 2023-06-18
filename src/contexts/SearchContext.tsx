@@ -1,15 +1,7 @@
-import { Params } from "@/@types/params";
 import { Work } from "@/@types/work";
-import { useWorks } from "@/hooks/useWorks";
 import { api } from "@/services/api";
 import { loadWorks } from "@/services/load-works";
-import {
-  ReactNode,
-  createContext,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import { ReactNode, createContext, useState } from "react";
 
 interface SearchProviderProps {
   children: ReactNode;
@@ -22,6 +14,7 @@ interface SearchContextProps {
   total: number;
   page: number;
   loading: boolean;
+  forceUpdateWorks(works?: Work[]): void;
 }
 
 export const SearchContext = createContext({} as SearchContextProps);
@@ -33,6 +26,11 @@ export function SearchProvider({ children }: SearchProviderProps) {
   const [loading, setLoading] = useState(false);
 
   const handleSearch = async (query: string, option: string) => {
+    if (!query && !option) {
+      setWorks(undefined);
+      return;
+    }
+
     setLoading(true);
     try {
       const response = await api.get<{
@@ -48,12 +46,16 @@ export function SearchProvider({ children }: SearchProviderProps) {
 
       const { objectIDs } = response.data;
 
-      if (!objectIDs) return;
+      if (!objectIDs) {
+        setTotal(-1);
+        setWorks(undefined);
+        return;
+      }
 
-      setTotal(objectIDs.length);
       const onlyFirstThreeIDs = objectIDs.slice((page - 1) * 9, 9 * page);
       const works = await loadWorks(onlyFirstThreeIDs);
       setWorks(works);
+      setTotal(objectIDs.length);
     } catch {
     } finally {
       setLoading(false);
@@ -62,6 +64,11 @@ export function SearchProvider({ children }: SearchProviderProps) {
 
   function handleChangePage(page: number) {
     setPage(page);
+  }
+
+  function forceUpdateWorks(works?: Work[]) {
+    setWorks(works);
+    setTotal(!!works ? works.length : 0);
   }
 
   return (
@@ -73,6 +80,7 @@ export function SearchProvider({ children }: SearchProviderProps) {
         total,
         page,
         loading,
+        forceUpdateWorks,
       }}
     >
       {children}

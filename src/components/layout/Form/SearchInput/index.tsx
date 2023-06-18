@@ -7,17 +7,19 @@ import { Loading } from "../../Loading";
 
 export function SearchInput() {
   const [expandRadio, setExpandRadio] = useState(false);
-  const { handleSearch, page, loading } = useSearch();
+  const { handleSearch, page, loading, forceUpdateWorks } = useSearch();
 
   const [q, setQ] = useState("");
   const [searchBy, setSearchBy] = useState("");
 
   function handleClear() {
     setQ("");
+    setSearchBy("");
+    forceUpdateWorks(undefined);
   }
 
   useEffect(() => {
-    handleSearch(q, searchBy);
+    handleSearch(q, searchBy).then((res) => res);
   }, [searchBy, page]); // eslint-disable-line
 
   return (
@@ -36,7 +38,7 @@ export function SearchInput() {
           value={q}
           onChange={(e) => setQ(e.target.value)}
         />
-        {q.length > 0 && (
+        {(q.length > 0 || !!searchBy) && (
           <button type="button" className="clear" onClick={handleClear}>
             <X size={18} />
           </button>
