@@ -16,6 +16,7 @@ export const EmptyStateContainer = styled("div", {
   },
 
   "@md": {
+    padding: "0 1rem",
     img: {
       width: 200,
       height: 200,
