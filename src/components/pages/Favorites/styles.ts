@@ -5,6 +5,7 @@ export const Box = styled(Wrapper, {
   display: "flex",
   flexDirection: "column",
   gap: "1rem",
+  paddingBottom: "1rem",
 
   ".page-title": {
     fontFamily: "var(--pp-hatton)",
@@ -22,6 +23,12 @@ export const Box = styled(Wrapper, {
     display: "block",
     maxWidth: "490px",
     width: "100%",
+  },
+
+  ".works": {
+    display: "grid",
+    gridTemplateColumns: "repeat(3,1fr)",
+    gap: "1rem",
   },
 });
 

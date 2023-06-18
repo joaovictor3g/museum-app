@@ -3,12 +3,27 @@ import { Box } from "./styles";
 import { Work } from "@/@types/work";
 import { Heart } from "lucide-react";
 import { CollaboratorsSlider, Tooltip } from "@/components/layout";
+import { key } from "@/constants/localStorage";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { useState } from "react";
 
 interface SectionInfosProps {
   work: Work;
 }
 
 export function SectionInfos({ work }: SectionInfosProps) {
+  const { storage, set } = useLocalStorage<number[]>(key);
+  const hasWorkinStorage = storage?.includes(work.id);
+
+  function handleFavoriteWork(id: number) {
+    if (storage) {
+      if (hasWorkinStorage) {
+        const removedIds = storage.filter((storageID) => storageID !== id);
+        set(key, removedIds);
+      } else set(key, [...storage, id]);
+    }
+  }
+
   return (
     <Box>
       <ImageSelector images={work?.additionalImages} mainImage={work.image} />
@@ -18,10 +33,15 @@ export function SectionInfos({ work }: SectionInfosProps) {
           <small className="category">Obra de arte</small>
           <Tooltip
             content={
-              <span style={{ fontFamily: "var(--inter)" }}>Favoritar</span>
+              <span style={{ fontFamily: "var(--inter)" }}>
+                {hasWorkinStorage ? "Favoritado" : "Favoritar"}
+              </span>
             }
           >
-            <button className="favorite">
+            <button
+              className={`favorite ${hasWorkinStorage ? "favorited" : ""}`}
+              onClick={() => handleFavoriteWork(work.id)}
+            >
               <Heart />
             </button>
           </Tooltip>
