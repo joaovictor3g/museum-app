@@ -20,8 +20,8 @@ export default function WorkDetail({ work }: WorkDetailProps) {
     <>
       <Head>
         <title>{work.name}</title>
-        <meta name="og:image" content="/banner.png" />
-        <meta name="image" property="og:image" content="/banner.png" />
+        <meta name="og:image" content={work.imageSmall} />
+        <meta name="image" property="og:image" content={work.imageSmall} />
         <meta name="og:title" content={work.name} />
       </Head>
       <div>
