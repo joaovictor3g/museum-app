@@ -13,10 +13,12 @@ export const EmptyStateContainer = styled("div", {
     fontStyle: "normal",
     fontSize: "1.125rem",
     color: "$gray40",
+    textAlign: "center",
   },
 
   "@md": {
     padding: "0 1rem",
+
     img: {
       width: 200,
       height: 200,
