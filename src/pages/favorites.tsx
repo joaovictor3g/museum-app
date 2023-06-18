@@ -1,5 +1,5 @@
 import { Work } from "@/@types/work";
-import { WorkBox } from "@/components/layout";
+import { EmptyState, WorkBox } from "@/components/layout";
 import { Loading } from "@/components/layout/Loading";
 import { Box, Container } from "@/components/pages/Favorites";
 import { MainInfoContainer, WorksGridContainer } from "@/components/styled";
@@ -9,9 +9,11 @@ import { loadWorks } from "@/services/load-works";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 
+import emptyImg from "@/assets/empty-states/folder.png";
+
 export default function Favorites() {
   const [works, setWorks] = useState<Work[]>();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const { storage: workIds } = useLocalStorage<number[]>(key);
 
@@ -42,21 +44,32 @@ export default function Favorites() {
         </MainInfoContainer>
         <section id="favorites">
           <Box>
-            <strong className="works-total">
-              Número total de obras: {works?.length ?? 0}
-            </strong>
+            {(works?.length ?? 0) > 0 ? (
+              <>
+                <strong className="works-total">
+                  Número total de obras: {works?.length ?? 0}
+                </strong>
 
-            {loading && (
-              <div className="loading-container">
-                <Loading />
-              </div>
+                {loading && (
+                  <div className="loading-container">
+                    <Loading />
+                  </div>
+                )}
+
+                <WorksGridContainer>
+                  {!!works &&
+                    !loading &&
+                    works.map((work) => <WorkBox key={work.id} work={work} />)}
+                </WorksGridContainer>
+              </>
+            ) : (
+              !loading && (
+                <EmptyState
+                  message="Você ainda não favoritou nenhuma arte."
+                  img={emptyImg}
+                />
+              )
             )}
-
-            <WorksGridContainer>
-              {!!works &&
-                !loading &&
-                works.map((work) => <WorkBox key={work.id} work={work} />)}
-            </WorksGridContainer>
           </Box>
         </section>
       </Container>
