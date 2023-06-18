@@ -14,4 +14,16 @@ export const EmptyStateContainer = styled("div", {
     fontSize: "1.125rem",
     color: "$gray40",
   },
+
+  "@md": {
+    img: {
+      width: 200,
+      height: 200,
+      objectFit: "contain",
+    },
+
+    ".message": {
+      fontSize: "$md",
+    },
+  },
 });

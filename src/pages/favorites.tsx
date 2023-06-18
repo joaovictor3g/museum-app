@@ -13,7 +13,7 @@ import emptyImg from "@/assets/empty-states/folder.png";
 
 export default function Favorites() {
   const [works, setWorks] = useState<Work[]>();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const { storage: workIds } = useLocalStorage<number[]>(key);
 
