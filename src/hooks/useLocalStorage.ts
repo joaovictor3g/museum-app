@@ -14,6 +14,8 @@ export function useLocalStorage<T>(key: string) {
     if (typeof window !== "undefined") {
       localStorage.setItem(key, JSON.stringify(content));
       setStorage(content);
+    } else {
+      console.log("window is not defined");
     }
   }
 
