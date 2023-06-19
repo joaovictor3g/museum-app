@@ -97,7 +97,7 @@ export function WorksOfArtSection() {
           <>
             <h1>Veja algumas obras</h1>
 
-            <MansoryContainer className="mansory">
+            <MansoryContainer className="mansory" ref={ref}>
               {works.map((work, i) => (
                 <ImageLink
                   key={work.id}
@@ -122,7 +122,6 @@ export function WorksOfArtSection() {
                 </ImageLink>
               ))}
             </MansoryContainer>
-            <div ref={ref} />
           </>
         )}
       </Box>
