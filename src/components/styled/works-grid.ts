@@ -2,7 +2,7 @@ import { styled } from "@/styles";
 
 export const WorksGridContainer = styled("div", {
   display: "grid",
-  gridTemplateColumns: "repeat(3,1fr)",
+  gridTemplateColumns: "repeat(3, 1fr)",
   gap: "1rem",
 
   "@lg": {

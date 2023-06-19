@@ -5,7 +5,12 @@ import { useEffect, useState } from "react";
 import { api } from "@/services/api";
 import { Work } from "@/@types/work";
 import { useSearch } from "@/hooks/useSearch";
-import { EmptyState, Pagination, WorkBox } from "@/components/layout";
+import {
+  EmptyState,
+  Pagination,
+  ScrollReveal,
+  WorkBox,
+} from "@/components/layout";
 import { Loading } from "@/components/layout/Loading";
 import { ids } from "@/constants/ids";
 
@@ -67,8 +72,10 @@ export function WorksOfArtSection() {
                     <Loading />
                   </div>
                 ) : (
-                  searchedWorks.map((work) => (
-                    <WorkBox key={work.id} work={work} />
+                  searchedWorks.map((work, i) => (
+                    <ScrollReveal key={work.id} delayMs={200 * i}>
+                      <WorkBox work={work} />
+                    </ScrollReveal>
                   ))
                 )}
               </WorksGridContainer>

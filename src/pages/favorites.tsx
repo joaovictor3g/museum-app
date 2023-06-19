@@ -1,5 +1,5 @@
 import { Work } from "@/@types/work";
-import { EmptyState, WorkBox } from "@/components/layout";
+import { EmptyState, ScrollReveal, WorkBox } from "@/components/layout";
 import { Loading } from "@/components/layout/Loading";
 import { Box, Container } from "@/components/pages/Favorites";
 import { MainInfoContainer, WorksGridContainer } from "@/components/styled";
@@ -61,7 +61,9 @@ export default function Favorites() {
                       {!!works &&
                         !loading &&
                         works.map((work) => (
-                          <WorkBox key={work.id} work={work} />
+                          <ScrollReveal key={work.id}>
+                            <WorkBox work={work} />
+                          </ScrollReveal>
                         ))}
                     </WorksGridContainer>
                   </>
