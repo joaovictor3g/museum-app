@@ -29,7 +29,7 @@ export function SectionOtherWorks({ work }: SectionOtherWorksProps) {
     );
   }
 
-  if (!works || works.length === 0)
+  if (!filteredWorks || filteredWorks.length === 0)
     return (
       <EmptyState
         message="Não encontramos outras obras do artista."
