@@ -1,25 +1,24 @@
-import {
-  MansoryContainer,
-  Separator,
-  WorksGridContainer,
-} from "@/components/styled";
-import { Box, WorksOfArtSectionContainer } from "./styles";
+import { MansoryContainer, WorksGridContainer } from "@/components/styled";
+import { Box, ImageLink, WorksOfArtSectionContainer } from "./styles";
 
 import { useEffect, useState } from "react";
 import { api } from "@/services/api";
 import { Work } from "@/@types/work";
-import Link from "next/link";
 import { useSearch } from "@/hooks/useSearch";
 import { EmptyState, Pagination, WorkBox } from "@/components/layout";
 import { Loading } from "@/components/layout/Loading";
 import { ids } from "@/constants/ids";
 
+import classNames from "classnames";
+
 import emptyStateImg from "@/assets/empty-states/papers.png";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 const requests = ids.map((id) => api.get(`/objects/${id}`));
 
 export function WorksOfArtSection() {
   const [works, setWorks] = useState<Work[]>([]);
+  const [visible, ref] = useIntersectionObserver<HTMLDivElement>(true);
 
   const {
     works: searchedWorks,
@@ -99,8 +98,17 @@ export function WorksOfArtSection() {
             <h1>Veja algumas obras</h1>
 
             <MansoryContainer className="mansory">
-              {works.map((work) => (
-                <Link href={`/work/${work.id}`} key={work.id}>
+              {works.map((work, i) => (
+                <ImageLink
+                  key={work.id}
+                  href={`/work/${work.id}`}
+                  className={classNames({
+                    hidden: !visible,
+                    "on-view": visible,
+                    even: i % 2 === 0,
+                  })}
+                  css={{ "--time": `${(i + 1 + 8) * 100}ms` }}
+                >
                   <figure>
                     <img src={work.image} alt={work.name} />
 
@@ -111,9 +119,10 @@ export function WorksOfArtSection() {
                       <span className="work-info-author">{work.author}</span>
                     </div>
                   </figure>
-                </Link>
+                </ImageLink>
               ))}
             </MansoryContainer>
+            <div ref={ref} />
           </>
         )}
       </Box>

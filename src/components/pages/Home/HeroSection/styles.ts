@@ -1,5 +1,17 @@
 import { Wrapper } from "@/components/styled";
-import { styled } from "@/styles";
+import { styled, keyframes } from "@/styles";
+
+const showUp = keyframes({
+  from: {
+    transform: "translateY(100px)",
+    opacity: 0,
+  },
+
+  to: {
+    transform: "translateY(0)",
+    opacity: 1,
+  },
+});
 
 export const HeroSectionContainer = styled("section", {
   backgroundImage: `url(/hero-background.png)`,
@@ -34,6 +46,7 @@ export const Box = styled(Wrapper, {
     fontWeight: 500,
     color: "$gray10",
     fontFamily: "var(--pp-hatton)",
+    animation: `${showUp} 500ms linear`,
 
     ".highlight": {
       color: "$primaryMain",
@@ -47,6 +60,7 @@ export const Box = styled(Wrapper, {
     color: "$gray20",
     fontFamily: "var(--inter)",
     fontSize: "$xl",
+    animation: `${showUp} 500ms linear`,
   },
 
   ".scrolldown": {

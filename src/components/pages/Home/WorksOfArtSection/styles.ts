@@ -1,5 +1,56 @@
 import { Wrapper } from "@/components/styled";
-import { styled } from "@/styles";
+import { styled, keyframes } from "@/styles";
+import Link from "next/link";
+
+const showUp = keyframes({
+  "0%": {},
+
+  "100%": {},
+});
+
+const slideIn = keyframes({
+  "0%": {
+    transform: "translateX(200px)",
+    opacity: 0,
+  },
+
+  "25%": {
+    transform: "translateX(100px)",
+    opacity: 0,
+  },
+
+  "50%": {
+    transform: "translateX(50px)",
+
+    opacity: 0,
+  },
+  "100%": {
+    transform: "translateX(0)",
+    opacity: 1,
+  },
+});
+
+const slideUp = keyframes({
+  "0%": {
+    transform: "translateY(200px)",
+    opacity: 0,
+  },
+  "25%": {
+    transform: "translateY(100px)",
+
+    opacity: 0,
+  },
+
+  "50%": {
+    transform: "translateY(100px)",
+
+    opacity: 0,
+  },
+  "100%": {
+    transform: "translateY(0)",
+    opacity: 1,
+  },
+});
 
 export const WorksOfArtSectionContainer = styled("section", {
   marginTop: 216,
@@ -107,5 +158,21 @@ export const Box = styled(Wrapper, {
         },
       },
     },
+  },
+});
+
+export const ImageLink = styled(Link, {
+  display: "block",
+
+  "&.hidden": {
+    opacity: 0,
+  },
+
+  "&.on-view.even": {
+    animation: `${slideIn} var(--time) ease-out`,
+  },
+
+  "&:not(.even).on-view": {
+    animation: `${slideUp} var(--time) ease-out`,
   },
 });

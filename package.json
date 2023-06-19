@@ -17,6 +17,7 @@
     "@types/react": "18.2.12",
     "@types/react-dom": "18.2.5",
     "axios": "^1.4.0",
+    "classnames": "^2.3.2",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.6",
     "keen-slider": "^6.8.5",
