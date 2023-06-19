@@ -34,4 +34,4 @@ npm i
 npm run dev
 ```
 
-Com isso tudo feito, a aplicação deve estar disponível na url local: `http://localhost:3000`. A aplicação também se encontra no ar com deploy realizado na Vercel, no seguinte link: https://museum-app-eight.vercel.app/
+Com isso tudo feito, a aplicação deve estar disponível na url local: http://localhost:3000. A aplicação também se encontra no ar com deploy realizado na Vercel, no seguinte link: https://metropolitan-museum.vercel.app/

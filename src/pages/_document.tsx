@@ -5,6 +5,10 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        <meta name="og:image" content="/banner.png" />
+        <meta name="image" property="og:image" content="/banner.png" />
+        <meta name="og:title" content="Museu Metropolitano de arte" />
+
         <link rel="shortcut icon" href="/favicon.svg" />
         <style
           id="stitches"
