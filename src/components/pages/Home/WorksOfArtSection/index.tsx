@@ -13,8 +13,7 @@ import classNames from "classnames";
 
 import emptyStateImg from "@/assets/empty-states/papers.png";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
-
-const requests = ids.map((id) => api.get(`/objects/${id}`));
+import { loadWorks } from "@/services/load-works";
 
 export function WorksOfArtSection() {
   const [works, setWorks] = useState<Work[]>([]);
@@ -29,20 +28,11 @@ export function WorksOfArtSection() {
   } = useSearch();
 
   async function getImageWorks() {
-    const responseObjects = await Promise.all(requests);
-    const works = responseObjects.map<Work>(({ data }) => ({
-      id: data.objectID,
-      image: data.primaryImageSmall,
-      name: data.title,
-      author: data.artistDisplayName,
-      additionalImages: data.additionalImages,
-      constituents: data.constituents,
-      imageSmall: data.primaryImageSmall,
-      isPublicDomain: data.isPublicDomain,
-      fullName: data.title,
-    }));
+    const works = await loadWorks(
+      ids.sort(() => Math.random() - 0.5).slice(0, 10)
+    );
 
-    setWorks(works);
+    if (works) setWorks(works);
   }
 
   useEffect(() => {
