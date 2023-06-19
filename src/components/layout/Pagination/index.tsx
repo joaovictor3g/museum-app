@@ -9,6 +9,8 @@ interface PaginationProps {
 }
 
 export function Pagination(props: PaginationProps) {
+  if (props.totalPages === 1) return null;
+
   function handleNextPaginationNumbers() {
     props.onChange(props.page + 1);
   }

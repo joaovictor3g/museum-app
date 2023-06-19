@@ -21,6 +21,22 @@ export const Box = styled(Link, {
     width: "100%",
   },
 
+  ".image-unavailable": {
+    minWidth: 300,
+    minHeight: 300,
+
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    textDecoration: "none",
+
+    span: {
+      fontFamily: "var(--pp-hatton)",
+      fontSize: "$xl",
+      textAlign: "center",
+    },
+  },
+
   ".infos": {
     display: "flex",
     flexDirection: "column",

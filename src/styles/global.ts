@@ -18,7 +18,8 @@ export const globalStyles = globalCss({
   },
 
   main: {
-    minHeight: "calc(100vh - 240px)", // 160px Header height + Footer height + marginBottom
+    "--min-height": "calc(100vh - 240px)", // 160px Header height + Footer height + marginBottom
+    minHeight: "var(--min-height)",
     marginBottom: 80,
   },
 

@@ -8,7 +8,7 @@ export const NotFoundContainer = styled("div", {
   gap: "2rem",
   position: "relative",
 
-  height: "calc(100vh - 160px)",
+  height: "var(--min-height)",
 
   fontFamily: "var(--inter)",
 

@@ -73,7 +73,7 @@ export function WorksOfArtSection() {
                   </div>
                 ) : (
                   searchedWorks.map((work, i) => (
-                    <ScrollReveal key={work.id} delayMs={200 * i}>
+                    <ScrollReveal key={work.id} delayMs={200}>
                       <WorkBox work={work} />
                     </ScrollReveal>
                   ))
