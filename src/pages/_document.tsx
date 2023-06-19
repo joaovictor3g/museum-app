@@ -8,6 +8,10 @@ export default function Document() {
         <meta name="og:image" content="/banner.png" />
         <meta name="image" property="og:image" content="/banner.png" />
         <meta name="og:title" content="Museu Metropolitano de arte" />
+        <meta
+          name="og:description"
+          content="Detalhamento de obras do Museu Metropolitano de Arte."
+        />
 
         <link rel="shortcut icon" href="/favicon.svg" />
         <style
