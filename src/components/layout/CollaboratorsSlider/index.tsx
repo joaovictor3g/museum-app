@@ -5,6 +5,7 @@ import { KeenSliderPlugin, useKeenSlider } from "keen-slider/react";
 import { useEffect, useState } from "react";
 
 import "keen-slider/keen-slider.min.css";
+import { useRouter } from "next/router";
 interface CollaboratorsSliderProps {
   slides?: string[];
 }
@@ -24,6 +25,7 @@ const ResizePlugin: KeenSliderPlugin = (slider) => {
 
 export function CollaboratorsSlider({ slides }: CollaboratorsSliderProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const { asPath } = useRouter();
 
   const [sliderRef, instanceRef] = useKeenSlider(
     {
@@ -63,7 +65,7 @@ export function CollaboratorsSlider({ slides }: CollaboratorsSliderProps) {
 
   useEffect(() => {
     instanceRef.current?.update();
-  }, [instanceRef]);
+  }, [instanceRef, asPath]);
 
   if (!slides) {
     return <span>Não foram encontrados contribuintes</span>;
