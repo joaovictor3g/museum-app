@@ -62,7 +62,7 @@ export const Box = styled("form", {
   },
 });
 
-export const SearchInputContainer = styled("div", {
+export const SearchInputContainer = styled("label", {
   display: "flex",
   alignItems: "center",
   backgroundColor: "$gray100",
@@ -115,8 +115,11 @@ export const SearchInputContainer = styled("div", {
   },
 
   "@md": {
+    gap: 8,
+
     svg: {
-      display: "none",
+      width: 15,
+      height: 15,
     },
 
     input: {

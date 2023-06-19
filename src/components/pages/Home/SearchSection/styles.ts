@@ -32,7 +32,7 @@ export const SearchSectionContainer = styled("section", {
     textAlign: "center",
     fontSize: "$2xl",
 
-    maxWidth: 900,
+    maxWidth: 700,
     width: "100%",
     margin: "0 auto 72px",
 

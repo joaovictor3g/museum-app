@@ -36,7 +36,7 @@ export default function WorkDetail({ work }: WorkDetailProps) {
         <Box>
           <SectionInfos work={work} />
           <Separator css={{ "--margin": "72px" }} />
-          <SectionOtherWorks author={work.author} />
+          <SectionOtherWorks work={work} />
         </Box>
       </div>
     </>

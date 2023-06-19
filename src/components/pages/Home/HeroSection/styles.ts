@@ -29,17 +29,19 @@ export const HeroSectionContainer = styled("section", {
 });
 
 export const Box = styled(Wrapper, {
-  paddingTop: 347,
+  paddingBottom: "3rem",
+
   height: "inherit",
   display: "flex",
   flexDirection: "column",
   textAlign: "center",
+  justifyContent: "center",
+  paddingTop: 200,
 
   alignItems: "center",
   gap: "1.5rem",
   maxWidth: 1000,
   width: "100%",
-  paddingBottom: "3rem",
 
   p: {
     fontSize: "$4xl",
@@ -69,7 +71,6 @@ export const Box = styled(Wrapper, {
     color: "$primaryMain",
     border: "1px solid $primaryMain",
     borderRadius: "$full",
-
     width: 64,
     height: 64,
     display: "flex",

@@ -30,10 +30,11 @@ export function SearchInput() {
         await handleSearch(q, searchBy);
       }}
     >
-      <SearchInputContainer>
+      <SearchInputContainer htmlFor="input-search">
         <Search />
         <input
           type="text"
+          id="input-search"
           placeholder="Busque obras por artistas, títulos ou locais"
           value={q}
           onChange={(e) => setQ(e.target.value)}

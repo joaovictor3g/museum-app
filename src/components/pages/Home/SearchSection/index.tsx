@@ -11,7 +11,7 @@ export function SearchSection() {
       <Wrapper ref={ref}>
         <p className={`hint ${visible ? "on-view" : "hidden"}`}>
           Pesquise entre as mais de <span className="highlight">400.000</span>{" "}
-          obras do museu metropolitano de arte.
+          obras existentes.
         </p>
 
         <SearchInput />

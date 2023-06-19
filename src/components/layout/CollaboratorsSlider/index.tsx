@@ -12,7 +12,6 @@ interface CollaboratorsSliderProps {
 const ResizePlugin: KeenSliderPlugin = (slider) => {
   const observer = new ResizeObserver(function () {
     slider.update();
-    console.log("resizing...");
   });
 
   slider.on("created", () => {
@@ -61,6 +60,10 @@ export function CollaboratorsSlider({ slides }: CollaboratorsSliderProps) {
     },
     [ResizePlugin]
   );
+
+  useEffect(() => {
+    instanceRef.current?.update();
+  }, [instanceRef]);
 
   if (!slides) {
     return <span>Não foram encontrados contribuintes</span>;

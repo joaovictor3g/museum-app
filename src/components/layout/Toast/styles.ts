@@ -94,6 +94,7 @@ export const ToastClose = styled(Toast.Close, {
 
   backgroundColor: "transparent",
   border: "0",
+  color: "$gray90",
 
   svg: {
     width: "24px",

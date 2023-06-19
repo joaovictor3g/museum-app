@@ -13,8 +13,8 @@ export function useIntersectionObserver<T extends HTMLElement>(
 
     const observer = new IntersectionObserver(
       ([{ isIntersecting }], obs) => {
-        setVisible(isIntersecting);
         if (isIntersecting) {
+          setVisible(isIntersecting);
           if (once) obs.unobserve(instanceCurrent);
         }
       },

@@ -5,14 +5,21 @@ import { WorksGridContainer } from "@/components/styled";
 import { Loading } from "@/components/layout/Loading";
 
 import emptyStateImg from "@/assets/empty-states/papers.png";
+import { Work } from "@/@types/work";
+import { useMemo } from "react";
 interface SectionOtherWorksProps {
-  author: string;
+  work: Pick<Work, "author" | "id">;
 }
 
-export function SectionOtherWorks({ author }: SectionOtherWorksProps) {
+export function SectionOtherWorks({ work }: SectionOtherWorksProps) {
   const { works, loading } = useWorks({
-    params: { artistsOrCulture: true, q: author },
+    params: { artistsOrCulture: true, q: work.author },
   });
+
+  const filteredWorks = useMemo(
+    () => works?.filter((_work) => _work.id !== work.id),
+    [work.id, works]
+  );
 
   if (loading) {
     return (
@@ -35,7 +42,7 @@ export function SectionOtherWorks({ author }: SectionOtherWorksProps) {
       <h1>Outras obras do artista</h1>
 
       <WorksGridContainer>
-        {works.map((work) => (
+        {filteredWorks?.map((work) => (
           <WorkBox key={work.id} work={work} />
         ))}
       </WorksGridContainer>
