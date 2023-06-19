@@ -25,8 +25,14 @@ export const ImageSelectorContainer = styled("div", {
       height: "max-content",
       maxHeight: 132,
 
+      transition: "opacity 0.5s",
+
       "&[data-active=true]": {
         outline: "2px solid $primary60",
+      },
+
+      "&:hover": {
+        opacity: 0.6,
       },
     },
 

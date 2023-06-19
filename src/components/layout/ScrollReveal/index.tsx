@@ -17,9 +17,9 @@ export function ScrollReveal({ delayMs, children }: ScrollRevealProps) {
         const sr = (await import("scrollreveal")).default;
         sr().reveal(refCurrent, {
           reset: false,
-          delay: delayMs ?? 500,
+          delay: delayMs ?? 200,
           scale: 1,
-          easing: "ease-in",
+          easing: "ease-out",
         });
       }
     }
