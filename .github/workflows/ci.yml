@@ -24,8 +24,3 @@ jobs:
 
       - name: Execute Unit tests
         run: npm ci && npm run test
-        id: test
-
-      - name: Deploy to Vercel
-        if: steps.test.outcome == 'success'
-        run: npx vercel --prod
