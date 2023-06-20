@@ -23,5 +23,9 @@ jobs:
           cache: "npm"
 
       - name: Execute Unit tests
-        run: npm ci
-      - run: npm run test
+        run: npm ci && npm run test
+        id: test
+
+      - name: Deploy to Vercel
+        if: steps.test.outcome == 'success'
+        run: npx vercel --prod
