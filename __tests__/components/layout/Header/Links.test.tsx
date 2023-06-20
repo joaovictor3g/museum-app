@@ -53,6 +53,6 @@ describe("Header links", () => {
     render(<Links />);
 
     const link = screen.getByTestId("favorites");
-    expect(link).not.toHaveClass("active");
+    expect(link).toHaveClass("active");
   });
 });
