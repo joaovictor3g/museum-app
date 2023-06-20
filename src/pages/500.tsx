@@ -3,27 +3,26 @@ import { Blur2 } from "@/components/styled";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import error500Img from "@/assets/errors/500.png";
-import { GetStaticProps } from "next";
 
-interface Error500Props {
-  message?: string;
-}
+type Query = {
+  message: string;
+};
 
-export default function Error500({ message }: Error500Props) {
+export default function Error500() {
+  const { query } = useRouter();
+  const { message } = query as Query;
+
   const errMsg = message ?? "Um erro interno no servidor ocorreu.";
 
   return (
     <>
       <Head>
         <title>500 - Internal server error</title>
-        <meta name="og:image" content="../assets/errors/500.png" />
-        <meta
-          name="image"
-          property="og:image"
-          content="../assets/errors/500.png"
-        />
+        <meta name="og:image" content="/banner.png" />
+        <meta name="image" property="og:image" content="/banner.png" />
         <meta name="og:title" content="Erro interno no servidor" />
         <meta name="og:description" content={errMsg} />
       </Head>
@@ -41,11 +40,3 @@ export default function Error500({ message }: Error500Props) {
     </>
   );
 }
-
-export const getStaticProps: GetStaticProps = async (ctx) => {
-  return {
-    props: {
-      message: ctx.params?.message ?? null,
-    },
-  };
-};
