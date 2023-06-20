@@ -24,7 +24,12 @@ api.interceptors.response.use(
   (res) => res,
   (error) => {
     if (error.response) {
-      if (error.response.status === 500) Router.push("/500");
+      if (error.response.status === 500)
+        Router.push("/500", {
+          query: {
+            message: error.response.data.message,
+          },
+        });
     }
 
     return Promise.reject(error);
