@@ -6,6 +6,7 @@ import { ids } from "@/constants/ids";
 import { api } from "@/services/api";
 import { loadWorks } from "@/services/load-works";
 import { addEllipsisOnStringBiggerThan50 } from "@/utils";
+import { AxiosError } from "axios";
 import { ArrowLeft } from "lucide-react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
@@ -72,11 +73,28 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         },
       },
     };
-  } catch {
+  } catch (err) {
+    if (err instanceof AxiosError) {
+      if (err.response && err.response.status === 404) {
+        return {
+          redirect: {
+            permanent: false,
+            destination: "/404",
+          },
+        };
+      }
+
+      if (err.response && err.response.status === 500) {
+        return {
+          redirect: {
+            permanent: false,
+            destination: "/500",
+          },
+        };
+      }
+    }
+
     return {
-      props: {
-        work: {},
-      },
       redirect: {
         permanent: false,
         destination: "/",
