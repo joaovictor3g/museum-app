@@ -22,6 +22,7 @@ export function Links() {
           <Link
             href="/favorites"
             className={asPath === "/favorites" ? "active" : ""}
+            data-testid="favorites"
           >
             meus favoritos
           </Link>
