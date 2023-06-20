@@ -13,6 +13,8 @@ export default function Document() {
           content="Detalhamento de obras do Museu Metropolitano de Arte."
         />
 
+        <meta property="twitter:image" content="/banner.png" />
+
         <link rel="shortcut icon" href="/favicon.svg" />
         <style
           id="stitches"
