@@ -83,15 +83,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           },
         };
       }
-
-      if (err.response && err.response.status === 500) {
-        return {
-          redirect: {
-            permanent: false,
-            destination: "/500",
-          },
-        };
-      }
     }
 
     return {

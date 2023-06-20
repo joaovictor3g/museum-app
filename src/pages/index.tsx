@@ -3,6 +3,7 @@ import { Blur } from "@/components/styled";
 import { HeroSection, SearchSection } from "@/components/pages/Home";
 import { WorksOfArtSection } from "@/components/pages/Home/WorksOfArtSection";
 import { SearchProvider } from "@/contexts/SearchContext";
+import { useEffect } from "react";
 
 export default function Home() {
   return (
