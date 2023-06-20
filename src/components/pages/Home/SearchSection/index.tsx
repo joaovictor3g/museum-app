@@ -9,7 +9,10 @@ export function SearchSection() {
   return (
     <SearchSectionContainer id="search">
       <Wrapper ref={ref}>
-        <p className={`hint ${visible ? "on-view" : "hidden"}`}>
+        <p
+          className={`hint ${visible ? "on-view" : "hidden"}`}
+          data-testid="hint"
+        >
           Pesquise entre as mais de <span className="highlight">400.000</span>{" "}
           obras existentes.
         </p>
