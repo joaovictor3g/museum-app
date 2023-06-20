@@ -91,7 +91,7 @@ export const Nav = styled("nav", {
   },
 });
 
-export const MobileMenu = styled("button", {
+export const MobileMenuContainer = styled("button", {
   backgroundColor: "transparent",
   border: "none",
   color: "$gray10",
