@@ -18,11 +18,11 @@ export default function Error500({ message }: Error500Props) {
     <>
       <Head>
         <title>500 - Internal server error</title>
-        <meta name="og:image" content="../assets/erros/500.png" />
+        <meta name="og:image" content="../assets/errors/500.png" />
         <meta
           name="image"
           property="og:image"
-          content="../assets/erros/500.png"
+          content="../assets/errors/500.png"
         />
         <meta name="og:title" content="Erro interno no servidor" />
         <meta name="og:description" content={errMsg} />
@@ -47,6 +47,5 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     props: {
       message: ctx.params?.message ?? null,
     },
-    revalidate: 10,
   };
 };

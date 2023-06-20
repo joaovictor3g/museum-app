@@ -11,6 +11,14 @@ export default function NotFound() {
     <>
       <Head>
         <title>404 - Not Found</title>
+        <meta name="og:image" content="../assets/errors/404.png" />
+        <meta
+          name="image"
+          property="og:image"
+          content="../assets/errors/404.png"
+        />
+        <meta name="og:title" content="Não encontrado" />
+        <meta name="og:description" content="Conteúdo não foi encontrado" />
       </Head>
       <NotFoundContainer>
         <Image src={notFoundImg} alt="Conteúdo não encontrado" />
