@@ -1,7 +1,7 @@
 import { NotFoundContainer } from "@/components/pages/404/styles";
 import Image from "next/image";
 
-import notFoundImg from "@/assets/404.png";
+import notFoundImg from "@/assets/errors/404.png";
 import Head from "next/head";
 import Link from "next/link";
 import { Blur2 } from "@/components/styled";

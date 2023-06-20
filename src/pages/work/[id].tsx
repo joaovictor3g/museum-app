@@ -55,20 +55,32 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = params!.id;
 
-  const response = await api.get(`/objects/${id}`);
-  const work = response.data;
+  try {
+    const response = await api.get(`/objects/${id}`);
+    const work = response.data;
 
-  return {
-    props: {
-      work: {
-        ...work,
-        name: addEllipsisOnStringBiggerThan50(work.title),
-        fullName: work.title,
-        id: work.objectID,
-        image: work.primaryImage,
-        author: work.artistDisplayName,
-        constituents: work.constituents,
+    return {
+      props: {
+        work: {
+          ...work,
+          name: addEllipsisOnStringBiggerThan50(work.title),
+          fullName: work.title,
+          id: work.objectID,
+          image: work.primaryImage,
+          author: work.artistDisplayName,
+          constituents: work.constituents,
+        },
       },
-    },
-  };
+    };
+  } catch {
+    return {
+      props: {
+        work: {},
+      },
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+    };
+  }
 };
