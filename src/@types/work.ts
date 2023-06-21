@@ -14,4 +14,5 @@ export interface Work {
   isPublicDomain: boolean;
   constituents: Constituent[] | null;
   fullName: string;
+  objectDate: string;
 }

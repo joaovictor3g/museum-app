@@ -20,7 +20,10 @@ export function WorkBox({ work }: WorkBoxProps) {
         </div>
       )}
       <div className="infos">
-        <strong className="title">{work.name}</strong>
+        <strong
+          className="title"
+          dangerouslySetInnerHTML={{ __html: work.name }}
+        />
         <span className="author">{author}</span>
       </div>
     </Box>

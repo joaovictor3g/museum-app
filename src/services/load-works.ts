@@ -20,6 +20,7 @@ export async function loadWorks(ids: number[]) {
         constituents: value.data.constituents,
         imageSmall: value.data.primaryImageSmall,
         isPublicDomain: value.data.isPublicDomain,
+        objectDate: value.data.objectDate,
       }));
 
     return works as Work[];

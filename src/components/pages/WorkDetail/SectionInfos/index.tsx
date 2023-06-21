@@ -63,10 +63,12 @@ export function SectionInfos({ work }: SectionInfosProps) {
             </button>
           </Tooltip>
         </header>
-        <h1 className="title" title={work.fullName}>
-          {work.name}
-        </h1>
-        <time className="createdAt">Criada em 12 de junho de 1995</time>
+        <h1
+          className="title"
+          title={work.fullName}
+          dangerouslySetInnerHTML={{ __html: work.name }}
+        />
+        <time className="createdAt">Criação: {work.objectDate}</time>
 
         <div className="artist">
           <span className="text">Artista</span>
