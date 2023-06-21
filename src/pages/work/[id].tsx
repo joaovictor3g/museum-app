@@ -1,14 +1,17 @@
 import { Work } from "@/@types/work";
-import { Box, SectionInfos } from "@/components/pages/WorkDetail";
-import { SectionOtherWorks } from "@/components/pages/WorkDetail/SectionOtherWorks";
+import {
+  Box,
+  SectionInfos,
+  SectionOtherWorks,
+} from "@/components/pages/WorkDetail";
 import { MainInfoContainer, Separator, Wrapper } from "@/components/styled";
 import { ids } from "@/constants/ids";
-import { api } from "@/services/api";
 import { loadWorks } from "@/services/load-works";
-import { addEllipsisOnStringBiggerThan50 } from "@/utils";
+
 import { AxiosError } from "axios";
 import { ArrowLeft } from "lucide-react";
-import { GetStaticProps, GetStaticPaths } from "next";
+
+import type { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -57,20 +60,20 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = params!.id;
 
   try {
-    const response = await api.get(`/objects/${id}`);
-    const work = response.data;
+    const works = await loadWorks([Number(id)]);
+
+    if (!works) {
+      return {
+        redirect: {
+          permanent: false,
+          destination: "/",
+        },
+      };
+    }
 
     return {
       props: {
-        work: {
-          ...work,
-          name: addEllipsisOnStringBiggerThan50(work.title),
-          fullName: work.title,
-          id: work.objectID,
-          image: work.primaryImage,
-          author: work.artistDisplayName,
-          constituents: work.constituents,
-        },
+        work: works[0],
       },
     };
   } catch (err) {
