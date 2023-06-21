@@ -16,7 +16,10 @@ export function MobileMenu({ open, handleOpen }: MobileMenuProps) {
   }, [asPath]); // eslint-disable-line
 
   return (
-    <MobileMenuContainer onClick={() => handleOpen(!open)}>
+    <MobileMenuContainer
+      onClick={() => handleOpen(!open)}
+      data-testid="hamburger-menu"
+    >
       {open ? <X /> : <Menu />}
     </MobileMenuContainer>
   );
