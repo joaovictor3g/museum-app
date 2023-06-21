@@ -15,6 +15,12 @@ export const Box = styled(Wrapper, {
     fontStyle: "normal",
   },
 
+  ".total-pagination": {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+
   ".page-description": {
     fontFamily: "var(--inter)",
     fontWeight: 400,
