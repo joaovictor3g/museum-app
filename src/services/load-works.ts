@@ -23,7 +23,7 @@ export async function loadWorks(ids: number[]) {
         objectDate: value.data.objectDate,
       }));
 
-    return works as Work[];
+    return works;
   } catch (error) {
     console.log(error);
   }
