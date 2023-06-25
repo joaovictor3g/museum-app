@@ -6,6 +6,7 @@ import { CollaboratorsSlider, Toast, Tooltip } from "@/components/layout";
 import { key } from "@/constants/localStorage";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useState } from "react";
+import { Separator } from "@/components/styled";
 
 interface SectionInfosProps {
   work: Work;
@@ -89,7 +90,7 @@ export function SectionInfos({ work }: SectionInfosProps) {
           )}
         </div>
 
-        <div className="separator" />
+        <Separator css={{ "--margin": "auto" }} />
 
         <CollaboratorsSlider
           slides={work.constituents?.map((constituent) => constituent.name)}

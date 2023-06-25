@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ImageSelectorContainer } from "./styles";
 
 import Image from "next/image";
-import { Loading } from "../Loading";
+import { Expand } from "lucide-react";
+import { Modal } from "../Modal";
 
 interface ImageSelectorProps {
   images: string[];
@@ -12,8 +13,11 @@ interface ImageSelectorProps {
 export function ImageSelector({ images, mainImage }: ImageSelectorProps) {
   const sideImages = [mainImage, ...images].slice(0, 5);
   const [mainImageView, setMainImageView] = useState(mainImage);
+  const [zoomModalOpen, setZoomModalOpen] = useState(false);
 
-  function handleImageClick(image: string) {
+  const mainImageRef = useRef<HTMLImageElement>(null);
+
+  function handleSideImageClick(image: string) {
     setMainImageView(sideImages.find((_image) => _image === image) ?? "");
   }
 
@@ -21,13 +25,24 @@ export function ImageSelector({ images, mainImage }: ImageSelectorProps) {
     setMainImageView(mainImage);
   }, [mainImage]);
 
+  useEffect(() => {
+    async function openFullScreen() {
+      const element = document.documentElement;
+      if (zoomModalOpen) {
+        if (element.requestFullscreen) await element.requestFullscreen();
+      }
+    }
+
+    openFullScreen();
+  }, [zoomModalOpen]);
+
   return (
     <ImageSelectorContainer>
       <div className="images-to-select">
         {sideImages.map((image, i) => (
           <button
             key={i}
-            onClick={() => handleImageClick(image)}
+            onClick={() => handleSideImageClick(image)}
             data-active={image === mainImageView}
           >
             <Image src={image} alt="" width={200} height={150} />
@@ -37,14 +52,30 @@ export function ImageSelector({ images, mainImage }: ImageSelectorProps) {
       <div className="main-image">
         <Image
           src={mainImageView}
-          // onLoadingComplete={() => setMainImageLoading(false)}
           alt=""
+          ref={mainImageRef}
           width={400}
           height={200}
           placeholder="blur"
           blurDataURL="/blur.png"
         />
+
+        <button className="zoom-image" onClick={() => setZoomModalOpen(true)}>
+          <Expand />
+        </button>
       </div>
+
+      <Modal title="" open={zoomModalOpen} onOpenChange={setZoomModalOpen}>
+        <Image
+          src={mainImageView}
+          alt=""
+          ref={mainImageRef}
+          width={400}
+          height={200}
+          placeholder="blur"
+          blurDataURL="/blur.png"
+        />
+      </Modal>
     </ImageSelectorContainer>
   );
 }

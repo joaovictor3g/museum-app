@@ -6,3 +6,4 @@ export { Pagination } from "./Pagination";
 export { EmptyState } from "./EmptyState";
 export { Toast } from "./Toast";
 export { ScrollReveal } from "./ScrollReveal";
+export { Modal } from "./Modal";

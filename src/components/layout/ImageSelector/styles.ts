@@ -1,4 +1,17 @@
-import { styled } from "@/styles";
+import { styled, css } from "@/styles";
+
+const scrollBarHidden = css({
+  "&::-webkit-scrollbar": {
+    width: 0,
+  },
+  // "&::-webkit-scrollbar-track": {
+  //   width: "6px",
+  // },
+  // "&::-webkit-scrollbar-thumb": {
+  //   background: ,
+  //   borderRadius: "24px",
+  // },
+});
 
 export const ImageSelectorContainer = styled("div", {
   display: "grid",
@@ -15,6 +28,13 @@ export const ImageSelectorContainer = styled("div", {
     display: "flex",
     flexDirection: "column",
     gap: "1rem",
+    overflowY: "auto",
+
+    scrollbarWidth: 0,
+
+    "&::-webkit-scrollbar": {
+      display: "none",
+    },
 
     button: {
       border: "1px solid $gray90",
@@ -28,7 +48,7 @@ export const ImageSelectorContainer = styled("div", {
       transition: "opacity 0.5s",
 
       "&[data-active=true]": {
-        outline: "2px solid $primary60",
+        border: "2px solid $primary60",
       },
 
       "&:hover": {
@@ -38,6 +58,7 @@ export const ImageSelectorContainer = styled("div", {
 
     img: {
       objectFit: "cover",
+      zIndex: 2,
     },
   },
 
@@ -54,8 +75,36 @@ export const ImageSelectorContainer = styled("div", {
       height: "100%",
     },
 
+    ".zoom-image": {
+      opacity: 0,
+      position: "absolute",
+      top: -16,
+      right: -16,
+
+      transition: "all 0.5s",
+
+      backgroundColor: "$grayMain",
+      padding: 4,
+      borderRadius: 4,
+      lineHeight: 0,
+
+      color: "$primary50",
+      border: "1px solid $gray70",
+    },
+
     img: {
-      objectFit: "fill",
+      // objectFit: "fill",
+      height: "100%",
+      maxHeight: 500,
+      objectFit: "cover",
+    },
+
+    "&:hover": {
+      ".zoom-image": {
+        opacity: 1,
+        top: 16,
+        right: 16,
+      },
     },
   },
 

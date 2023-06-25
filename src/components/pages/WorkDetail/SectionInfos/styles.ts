@@ -3,6 +3,7 @@ import { styled } from "@/styles";
 export const Box = styled("section", {
   display: "grid",
   gridTemplateColumns: "1fr 390px",
+  gridTemplateRows: "500px",
   gap: "1rem",
 
   fontFamily: "var(--inter)",
@@ -24,12 +25,11 @@ export const Box = styled("section", {
   },
 
   ".work-infos": {
+    height: "100%",
     display: "flex",
     flexDirection: "column",
+    justifyContent: "space-between",
     gap: "1rem",
-    paddingBottom: "2rem",
-
-    height: "max-content",
 
     ".category": {
       fontSize: "1rem",
@@ -81,7 +81,7 @@ export const Box = styled("section", {
     },
 
     ".separator": {
-      margin: "38px 0",
+      margin: "auto 0",
       width: "100%",
       height: 1,
       backgroundColor: "$gray90",
